@@ -1,12 +1,16 @@
 package model;
 
 public class member {
-	private Integer id;
+	private Integer member_id;
 	private String  name;
 	private Integer birthdate;
 	private Integer gender;
 	private Integer phone;
 	private String  address;
+
+	public member() {
+		super();
+	}
 
 	public member(String name, Integer birthdate, Integer gender, Integer phone, String address) {
 		super();
@@ -17,12 +21,12 @@ public class member {
 		this.address = address;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getMember_id() {
+		return member_id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setMember_id(Integer id) {
+		this.member_id = id;
 	}
 
 	public String getName() {
