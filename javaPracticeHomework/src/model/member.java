@@ -3,16 +3,16 @@ package model;
 public class member {
 	private Integer member_id;
 	private String  name;
-	private Integer birthdate;
+	private String birthdate;
 	private Integer gender;
-	private Integer phone;
+	private String phone;
 	private String  address;
 
 	public member() {
 		super();
 	}
 
-	public member(String name, Integer birthdate, Integer gender, Integer phone, String address) {
+	public member(String name, String birthdate, Integer gender, String phone, String address) {
 		super();
 		this.name = name;
 		this.birthdate = birthdate;
@@ -21,12 +21,12 @@ public class member {
 		this.address = address;
 	}
 
-	public Integer getMember_id() {
-		return member_id;
+	public void setMember_id(Integer member_id) {
+		this.member_id = member_id;
 	}
 
-	public void setMember_id(Integer id) {
-		this.member_id = id;
+	public Integer getMember_id() {
+		return member_id;
 	}
 
 	public String getName() {
@@ -37,11 +37,11 @@ public class member {
 		this.name = name;
 	}
 
-	public Integer getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Integer birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 
@@ -53,11 +53,11 @@ public class member {
 		this.gender = gender;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

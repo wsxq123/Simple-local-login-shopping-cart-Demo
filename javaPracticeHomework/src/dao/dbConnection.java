@@ -10,7 +10,7 @@ public class dbConnection {
 		System.out.println(dbConnection.getDB());
 	}
 
-	private static Connection getDB() {
+	public static Connection getDB() {
 		Connection conn = null;
 		String url = "jdbc:mysql://localhost:3306/company";
 		String user = "root";

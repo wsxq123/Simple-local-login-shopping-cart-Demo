@@ -16,6 +16,10 @@ public class product {
 		this.product_price = product_price;
 	}
 
+	public void setProduct_id(Integer product_id) {
+		this.product_id = product_id;
+	}
+
 	public String getProduct_name() {
 		return product_name;
 	}

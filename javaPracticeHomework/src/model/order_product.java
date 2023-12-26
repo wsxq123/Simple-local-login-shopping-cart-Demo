@@ -1,7 +1,7 @@
 package model;
 
 public class order_product {
-	private Integer order_id;
+	private String 	order_number;
 	private Integer product_id;
 	private Integer amount;
 	private Integer cost;
@@ -10,12 +10,28 @@ public class order_product {
 		super();
 	}
 
-	public order_product(Integer order_id, Integer product_id, Integer amount, Integer cost) {
+	public order_product(String order_number, Integer product_id, Integer amount, Integer cost) {
 		super();
-		this.order_id = order_id;
+		this.order_number = order_number;
 		this.product_id = product_id;
 		this.amount = amount;
 		this.cost = cost;
+	}
+
+	public String getOrder_number() {
+		return order_number;
+	}
+
+	public void setOrder_number(String order_number) {
+		this.order_number = order_number;
+	}
+
+	public void setorder_number(String order_number) {
+		this.order_number = order_number;
+	}
+
+	public void setProduct_id(Integer product_id) {
+		this.product_id = product_id;
 	}
 
 	public Integer getAmount() {
@@ -34,8 +50,8 @@ public class order_product {
 		this.cost = cost;
 	}
 
-	public Integer getOrder_id() {
-		return order_id;
+	public String getorder_number() {
+		return order_number;
 	}
 
 	public Integer getProduct_id() {
