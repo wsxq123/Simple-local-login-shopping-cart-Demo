@@ -12,18 +12,15 @@ public interface orderDao {
 
 //read
 	// single order search (orderSearchUI)
-	order queryOrder(int order_id);
+	order queryOrder(String order_Number);
 
-	// single order search by date(orderSearchUI)
-	order queryOrderByDate(int order_Date);
-
-	// orders search by a Time Range(orderSearchUI)
-	List<order> queryOrderByTimeRange(int dateStart, int dateEnd);
+	// orders search by date(orderSearchUI)
+	List<order> queryOrderByDate(String dateStart, String dateEnd);
 
 //update
 
 //delete
 	// (orderSearchUI)
-	order deleteOrder(int order_number);
+	void deleteOrder(String order_Number);
 
 }

@@ -22,11 +22,11 @@ public class order_productDaoImpl implements order_productDao{
 	@Override
 	public void createOrder_prduct(order_product op) {
 		Connection conn = dbConnection.getDB();
-		String sql="Insert into beauty_clinic.order_product(order_number,product_id,amount,cost)\" + \"values(?,?,?,?)";
+		String sql="Insert into beauty_clinic.order_product(order_Number,product_id,amount,cost)" + "values(?,?,?,?)";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, op.getOrder_number());
+			ps.setString(1, op.getOrder_Number());
 			ps.setInt(2, op.getProduct_id());
 			ps.setInt(3, op.getAmount());
 			ps.setInt(4, op.getCost());
@@ -39,7 +39,7 @@ public class order_productDaoImpl implements order_productDao{
 	}
 
 	@Override
-	public List<order_product> queryOorder_product(String order_number) {
+	public List<order_product> queryOorder_product(String order_Number) {
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.order_product";
 		List<order_product> l = new ArrayList();
@@ -51,7 +51,7 @@ public class order_productDaoImpl implements order_productDao{
 			while (rs.next()) {
 				order_product op = new order_product();
 				op = new order_product();
-				op.setOrder_number(rs.getString("order_number"));
+				op.setOrder_Number(rs.getString("order_Number"));
 				op.setProduct_id(rs.getInt("product_id"));
 				op.setAmount(rs.getInt("amount"));
 				op.setCost(rs.getInt("cost"));
@@ -66,13 +66,13 @@ public class order_productDaoImpl implements order_productDao{
 	}
 
 	@Override
-	public void deleteOrder_prduct(String order_number) {
+	public void deleteOrder_prduct(String order_Number) {
 		Connection conn = dbConnection.getDB();
-		String sql = "delete from beauty_clinic.order_product where order_number=?";
+		String sql = "delete from beauty_clinic.order_product where order_Number=?";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, order_number);
+			ps.setString(1, order_Number);
 
 			ps.executeUpdate();
 

@@ -2,8 +2,9 @@ package model;
 
 public class order {
 	private Integer order_id;
-	private Integer order_Date;
-	private Integer order_Time;
+	private String order_Number;
+	private String order_Date;
+	private String order_Time;
 	private Integer member_id;
 	private Integer seller_id;
 	private Integer total;
@@ -12,10 +13,10 @@ public class order {
 		super();
 	}
 
-	public order(Integer order_id, Integer order_Date, Integer order_Time, Integer member_id, Integer seller_id,
+	public order(String order_Number, String order_Date, String order_Time, Integer member_id, Integer seller_id,
 			Integer total) {
 		super();
-		this.order_id = order_id;
+		this.order_Number = order_Number;
 		this.order_Date = order_Date;
 		this.order_Time = order_Time;
 		this.member_id = member_id;
@@ -23,15 +24,47 @@ public class order {
 		this.total = total;
 	}
 
+	public String getOrder_Number() {
+		return order_Number;
+	}
+
+	public void setOrder_Number(String order_Number) {
+		this.order_Number = order_Number;
+	}
+
+	public void setOrder_id(Integer order_id) {
+		this.order_id = order_id;
+	}
+
+	public void setOrder_Date(String order_Date) {
+		this.order_Date = order_Date;
+	}
+
+	public void setOrder_Time(String order_Time) {
+		this.order_Time = order_Time;
+	}
+
+	public void setMember_id(Integer member_id) {
+		this.member_id = member_id;
+	}
+
+	public void setSeller_id(Integer seller_id) {
+		this.seller_id = seller_id;
+	}
+
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
+
 	public Integer getOrder_id() {
 		return order_id;
 	}
 
-	public Integer getOrder_Date() {
+	public String getOrder_Date() {
 		return order_Date;
 	}
 
-	public Integer getOrder_Time() {
+	public String getOrder_Time() {
 		return order_Time;
 	}
 
