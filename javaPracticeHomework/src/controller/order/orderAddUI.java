@@ -82,7 +82,7 @@ public class orderAddUI extends JFrame {
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 81, 554, 169);
+		panel.setBounds(10, 81, 554, 243);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -116,12 +116,40 @@ public class orderAddUI extends JFrame {
 		table.getColumnModel().getColumn(1).setMinWidth(5);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setFont(new Font("新細明體", Font.PLAIN, 18));
-		table.setBounds(10, 10, 313, 220);
+		table.setBounds(10, 113, 313, 120);
 		panel.add(table);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(333, 10, 157, 130);
+		panel_2.setBounds(316, 10, 228, 27);
 		panel.add(panel_2);
+		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
+		
+		JButton btnNewButton_2_2 = new JButton("");
+		panel_2.add(btnNewButton_2_2);
+		btnNewButton_2_2.setContentAreaFilled(false);
+		btnNewButton_2_2.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"));
+		btnNewButton_2_2.setBorderPainted(false);
+		
+		textField = new JTextField();
+		panel_2.add(textField);
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setFont(new Font("新細明體", Font.PLAIN, 14));
+		textField.setPreferredSize(new Dimension(4, 21));
+		textField.setText("0");
+		textField.setColumns(10);
+		
+		JButton btnNewButton_2_1_1 = new JButton("");
+		panel_2.add(btnNewButton_2_1_1);
+		btnNewButton_2_1_1.setContentAreaFilled(false);
+		btnNewButton_2_1_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\minusBtn.png"));
+		btnNewButton_2_1_1.setBorderPainted(false);
+		
+		JLabel lblNewLabel_1 = new JLabel("bodyShape_coolSculpting");
+		lblNewLabel_1.setBounds(367, 120, 145, 18);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("新細明體", Font.PLAIN, 14));
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -186,30 +214,5 @@ public class orderAddUI extends JFrame {
 		textArea.setText("0");
 		textArea.setBounds(363, 19, 30, 25);
 		contentPane.add(textArea);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(43, 272, 134, 25);
-		contentPane.add(panel_1);
-		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.X_AXIS));
-		
-		JButton btnNewButton_2_2 = new JButton("");
-		btnNewButton_2_2.setContentAreaFilled(false);
-		btnNewButton_2_2.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"));
-		btnNewButton_2_2.setBorderPainted(false);
-		panel_1.add(btnNewButton_2_2);
-		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setFont(new Font("新細明體", Font.PLAIN, 14));
-		textField.setPreferredSize(new Dimension(4, 21));
-		textField.setText("0");
-		panel_1.add(textField);
-		textField.setColumns(10);
-		
-		JButton btnNewButton_2_1_1 = new JButton("");
-		btnNewButton_2_1_1.setContentAreaFilled(false);
-		btnNewButton_2_1_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\minusBtn.png"));
-		btnNewButton_2_1_1.setBorderPainted(false);
-		panel_1.add(btnNewButton_2_1_1);
 	}
 }
