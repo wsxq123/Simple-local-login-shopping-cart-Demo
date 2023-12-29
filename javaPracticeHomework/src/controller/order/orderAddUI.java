@@ -36,13 +36,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.Box;
 
 public class orderAddUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable table;
-	private JTextField textField;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -79,77 +82,6 @@ public class orderAddUI extends JFrame {
 		contentPane.add(lblNewLabel);
 		//set invisible at start
 		lblNewLabel.setVisible(false);
-		
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 81, 554, 243);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		table = new JTable();
-		table.setRowMargin(10);
-		table.setRowHeight(30);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		table.setRowSelectionAllowed(false);
-		table.setShowHorizontalLines(false);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"bodyShape_coolSculpting", "12999"},
-				{"bodyShape_starformer", "15999"},
-				{"facialLaser_ECO2 Laser", "8999"},
-				{"facialLaser_picoWay", "4999"},
-			},
-			new String[] {
-				"name", "price"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, String.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		table.getColumnModel().getColumn(0).setPreferredWidth(150);
-		table.getColumnModel().getColumn(0).setMinWidth(150);
-		table.getColumnModel().getColumn(1).setPreferredWidth(90);
-		table.getColumnModel().getColumn(1).setMinWidth(5);
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setFont(new Font("新細明體", Font.PLAIN, 18));
-		table.setBounds(10, 113, 313, 120);
-		panel.add(table);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(316, 10, 228, 27);
-		panel.add(panel_2);
-		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
-		
-		JButton btnNewButton_2_2 = new JButton("");
-		panel_2.add(btnNewButton_2_2);
-		btnNewButton_2_2.setContentAreaFilled(false);
-		btnNewButton_2_2.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"));
-		btnNewButton_2_2.setBorderPainted(false);
-		
-		textField = new JTextField();
-		panel_2.add(textField);
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setFont(new Font("新細明體", Font.PLAIN, 14));
-		textField.setPreferredSize(new Dimension(4, 21));
-		textField.setText("0");
-		textField.setColumns(10);
-		
-		JButton btnNewButton_2_1_1 = new JButton("");
-		panel_2.add(btnNewButton_2_1_1);
-		btnNewButton_2_1_1.setContentAreaFilled(false);
-		btnNewButton_2_1_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\minusBtn.png"));
-		btnNewButton_2_1_1.setBorderPainted(false);
-		
-		JLabel lblNewLabel_1 = new JLabel("bodyShape_coolSculpting");
-		lblNewLabel_1.setBounds(367, 120, 145, 18);
-		panel.add(lblNewLabel_1);
-		lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("新細明體", Font.PLAIN, 14));
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -198,21 +130,82 @@ public class orderAddUI extends JFrame {
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\AddBtn.png"));
 		
-		JButton btnNewButton_2_1 = new JButton("");
-		btnNewButton_2_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\minusBtn.png"));
-		btnNewButton_2_1.setBounds(403, 21, 21, 23);
-		contentPane.add(btnNewButton_2_1);
-		btnNewButton_2_1.setBorderPainted(false);
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(10, 83, 554, 211);
+		contentPane.add(panel_3);
+		panel_3.setLayout(null);
 		
-		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setBounds(343, 21, 21, 23);
-		contentPane.add(btnNewButton_2);
-		btnNewButton_2.setBorderPainted(false);
-		btnNewButton_2.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"));
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(10, 5, 534, 196);
+		panel_3.add(panel_4);
+		GridBagLayout gbl_panel_4 = new GridBagLayout();
+		gbl_panel_4.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_4.rowHeights = new int[]{0, 0};
+		gbl_panel_4.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_4.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panel_4.setLayout(gbl_panel_4);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setText("0");
-		textArea.setBounds(363, 19, 30, 25);
-		contentPane.add(textArea);
+		JLabel lblNewLabel_1 = new JLabel("name");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblNewLabel_1.ipadx = 20;
+		gbc_lblNewLabel_1.gridwidth = 2;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 0;
+		panel_4.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("price");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblNewLabel_2.ipadx = 20;
+		gbc_lblNewLabel_2.gridwidth = 2;
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_2.gridx = 2;
+		gbc_lblNewLabel_2.gridy = 0;
+		panel_4.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		
+		Component horizontalGlue = Box.createHorizontalGlue();
+		GridBagConstraints gbc_horizontalGlue = new GridBagConstraints();
+		gbc_horizontalGlue.gridwidth = 3;
+		gbc_horizontalGlue.weightx = 1.0;
+		gbc_horizontalGlue.fill = GridBagConstraints.HORIZONTAL;
+		gbc_horizontalGlue.insets = new Insets(0, 0, 0, 5);
+		gbc_horizontalGlue.gridx = 4;
+		gbc_horizontalGlue.gridy = 0;
+		panel_4.add(horizontalGlue, gbc_horizontalGlue);
+		
+		JButton btnNewButton_2_2_1_2 = new JButton("");
+		btnNewButton_2_2_1_2.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"));
+		btnNewButton_2_2_1_2.setContentAreaFilled(false);
+		btnNewButton_2_2_1_2.setBorderPainted(false);
+		GridBagConstraints gbc_btnNewButton_2_2_1_2 = new GridBagConstraints();
+		gbc_btnNewButton_2_2_1_2.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton_2_2_1_2.gridx = 7;
+		gbc_btnNewButton_2_2_1_2.gridy = 0;
+		panel_4.add(btnNewButton_2_2_1_2, gbc_btnNewButton_2_2_1_2);
+		
+		textField_2 = new JTextField();
+		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
+		textField_2.setText("0");
+		textField_2.setMinimumSize(new Dimension(5, 21));
+		textField_2.setPreferredSize(new Dimension(5, 21));
+		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
+		gbc_textField_2.insets = new Insets(0, 0, 0, 5);
+		gbc_textField_2.gridx = 8;
+		gbc_textField_2.gridy = 0;
+		panel_4.add(textField_2, gbc_textField_2);
+		textField_2.setColumns(10);
+		
+		JButton btnNewButton_2_1_1_1_2 = new JButton("");
+		btnNewButton_2_1_1_1_2.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\minusBtn.png"));
+		btnNewButton_2_1_1_1_2.setContentAreaFilled(false);
+		btnNewButton_2_1_1_1_2.setBorderPainted(false);
+		GridBagConstraints gbc_btnNewButton_2_1_1_1_2 = new GridBagConstraints();
+		gbc_btnNewButton_2_1_1_1_2.gridx = 9;
+		gbc_btnNewButton_2_1_1_1_2.gridy = 0;
+		panel_4.add(btnNewButton_2_1_1_1_2, gbc_btnNewButton_2_1_1_1_2);
 	}
 }
