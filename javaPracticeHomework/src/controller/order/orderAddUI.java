@@ -40,6 +40,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.Box;
+import util.PlusPtn;
+import util.MinusBtn;
+import util.DeleteBtn;
 
 public class orderAddUI extends JFrame {
 
@@ -62,7 +65,8 @@ public class orderAddUI extends JFrame {
 			}
 		});
 	}
-
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -95,7 +99,7 @@ public class orderAddUI extends JFrame {
 		btnNewButton.setBounds(517, 21, 40, 32);
 		contentPane.add(btnNewButton);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -119,6 +123,11 @@ public class orderAddUI extends JFrame {
 		comboBox.setSelectedItem("select service");
 		
 		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -126,7 +135,7 @@ public class orderAddUI extends JFrame {
 		btnNewButton_1.setContentAreaFilled(false);
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setBackground(Color.WHITE);
-		btnNewButton_1.setBounds(285, 21, 77, 32);
+		btnNewButton_1.setBounds(282, 21, 77, 32);
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\AddBtn.png"));
 		
@@ -215,6 +224,10 @@ public class orderAddUI extends JFrame {
 		panel_4_2_1.add(horizontalGlue_2_1, gbc_horizontalGlue_2_1);
 		
 		JButton btnNewButton_2_2_1_2_2_1 = new JButton("");
+		btnNewButton_2_2_1_2_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton_2_2_1_2_2_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"));
 		btnNewButton_2_2_1_2_2_1.setContentAreaFilled(false);
 		btnNewButton_2_2_1_2_2_1.setBorderPainted(false);
@@ -263,5 +276,34 @@ public class orderAddUI extends JFrame {
 		btnNewButton_1_1.setBackground(Color.WHITE);
 		btnNewButton_1_1.setBounds(441, 318, 123, 32);
 		contentPane.add(btnNewButton_1_1);
+		
+		JButton button = PlusPtn.createJButton("", new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"), false, false);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button.setBounds(141, 331, 47, 23);
+		contentPane.add(button);
+		
+		JButton button_1 = MinusBtn.createJButton("", new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\minusBtn.png"), false, false);
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button_1.setBounds(198, 327, 47, 23);
+		contentPane.add(button_1);
+		
+		JButton button_2 = DeleteBtn.createJButton("", new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\deleteBtn.png"), false, false);
+		button_2.setBounds(260, 331, 47, 23);
+		contentPane.add(button_2);
+	}
+	
+public void productListItem(JPanel fatherItem,String product,int price) {
+	
+		
+		
+		
 	}
 }
+
+
