@@ -68,6 +68,7 @@ public class productDaoImpl implements productDao {
 	public List<product> queryAllProduct() {
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.product";
+				
 		List<product> l = new ArrayList();
 
 		try {

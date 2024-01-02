@@ -17,6 +17,14 @@ import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import javax.swing.BoxLayout;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.FlowLayout;
 
 public class test3 extends JFrame {
 
@@ -49,9 +57,101 @@ public class test3 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
-		productListItem.createProductListItem(contentPane,"adv",1200);
+		productListItem.createProductListItem(contentPane,"adv","1200");
+		productListItem.createProductListItem(contentPane,"asdad","1900");
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(100, 24, 141, 68);
+		contentPane.add(panel);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+		System.out.println(panel.getHeight());
+		
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1);
+		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
+		
+		JButton btnNewButton = new JButton("New button");
+		panel_1.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		panel_1.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		panel_1.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("New button");
+		panel_1.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("New button");
+		panel_1.add(btnNewButton_4);
+		
+		JButton btnNewButton_5 = new JButton("New button");
+		panel_1.add(btnNewButton_5);
+		
+		JPanel panel_2 = new JPanel();
+		panel.add(panel_2);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		panel_2.add(scrollBar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 112, 174, 55);
+		contentPane.add(scrollPane);
+		
+		JPanel panel_3 = new JPanel();
+		scrollPane.setViewportView(panel_3);
+		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.Y_AXIS));
+		
+		JButton btnNewButton_6 = new JButton("New button");
+		panel_3.add(btnNewButton_6);
+		
+		JButton btnNewButton_8 = new JButton("New button");
+		panel_3.add(btnNewButton_8);
+		
+		JButton btnNewButton_7 = new JButton("New button");
+		panel_3.add(btnNewButton_7);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(327, 24, 116, 93);
+		contentPane.add(scrollPane_1);
+		
+		JPanel panel_4 = new JPanel();
+		scrollPane_1.setViewportView(panel_4);
+		
+		JButton btnNewButton_10 = new JButton("New button");
+		
+		JButton btnNewButton_9 = new JButton("New button");
+		
+		JButton btnNewButton_11 = new JButton("New button");
+		
+		JButton btnNewButton_13 = new JButton("New button");
+		
+		JButton btnNewButton_12 = new JButton("New button");
+		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
+		panel_4.add(btnNewButton_10);
+		panel_4.add(btnNewButton_9);
+		panel_4.add(btnNewButton_11);
+		panel_4.add(btnNewButton_13);
+		panel_4.add(btnNewButton_12);
+		
+		JButton btnNewButton_14 = new JButton("New button");
+		panel_4.add(btnNewButton_14);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(307, 161, 141, 73);
+		contentPane.add(scrollPane_2);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		scrollPane_2.setColumnHeaderView(lblNewLabel);
+		
+		System.out.println(scrollPane_1.getHeight());
+		System.out.println(panel_4.getSize());
+		System.out.println(panel_4.getSize().getSize());
+		System.out.println(panel_4.getSize().getHeight());
+		System.out.println(panel_4.getHeight());
+		
 		
 //		JPanel panel_4_2_1 = new JPanel();
 //		contentPane.add(panel_4_2_1);

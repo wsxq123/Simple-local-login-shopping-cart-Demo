@@ -12,7 +12,7 @@ public class dbConnection {
 
 	public static Connection getDB() {
 		Connection conn = null;
-		String url = "jdbc:mysql://localhost:3306/company";
+		String url = "jdbc:mysql://localhost:3306/beauty_clinic";
 		String user = "root";
 		String password = "12345";
 

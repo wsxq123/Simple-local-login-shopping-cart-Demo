@@ -90,7 +90,7 @@ public class enterPageUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\Button_1.png"));
+		btnNewButton.setIcon(new ImageIcon(enterPageUI.class.getResource("/asset/Button_1.png")));
 		btnNewButton.setBounds(401, 244, 146, 48);
 		contentPane.add(btnNewButton);
 		
@@ -111,7 +111,10 @@ public class enterPageUI extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(-54, 10, 550, 366);
-		lblNewLabel.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\BG2.jpg"));
+//		lblNewLabel.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\BG2.jpg"));
+		
+//		lblNewLabel.setIcon(new ImageIcon("D:\\Tina\\java\\javaPracticeShop\\javaPracticeHomework\\asset\\\\BG2.jpg"));
+		lblNewLabel.setIcon(new ImageIcon(enterPageUI.class.getResource("/asset/BG2.jpg")));
 		contentPane.add(lblNewLabel);
 	}
 }

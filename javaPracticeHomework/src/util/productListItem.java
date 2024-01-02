@@ -16,90 +16,113 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controller.order.orderAddUI;
+
 public class productListItem {
-	public static void createProductListItem(JPanel fatherPanel,String product,int price) {
+	public static void createProductListItem(JPanel fatherPanel,String product,String price) {
 		JTextField textField;
 		
-		//gridbag panel
-		JPanel panel_4_2_1 = new JPanel();
-		fatherPanel.add(panel_4_2_1);
-		GridBagLayout gbl_panel_4_2_1 = new GridBagLayout();
-		gbl_panel_4_2_1.columnWidths = new int[]{0, 30, 30, 30, 30, 30, 30, 0, 0, 0, 0};
-		gbl_panel_4_2_1.rowHeights = new int[]{0, 0};
-		gbl_panel_4_2_1.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_4_2_1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel_4_2_1.setLayout(gbl_panel_4_2_1);
+		//gridbag panel				
+		JPanel gridbagPanel = new JPanel();
+		fatherPanel.add(gridbagPanel);
+		GridBagLayout gbl_productItemListPanelEx = new GridBagLayout();
+		gbl_productItemListPanelEx.columnWidths = new int[] {0, 0, 0, 46, 0, 0, 30, 30, 0, 0, 0};
+		gbl_productItemListPanelEx.rowHeights = new int[]{30, 0};
+		gbl_productItemListPanelEx.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.9E-324, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_productItemListPanelEx.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gridbagPanel.setLayout(gbl_productItemListPanelEx);
 		
-		//product name label
-		JLabel lblNewLabel_1_2_1 = new JLabel("bodyShape_coolSculpting");
-		lblNewLabel_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblNewLabel_1_2_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1_2_1.ipadx = 20;
-		gbc_lblNewLabel_1_2_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblNewLabel_1_2_1.gridwidth = 2;
-		gbc_lblNewLabel_1_2_1.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel_1_2_1.gridx = 0;
-		gbc_lblNewLabel_1_2_1.gridy = 0;
-		panel_4_2_1.add(lblNewLabel_1_2_1, gbc_lblNewLabel_1_2_1);
+		//product name label			
+		JLabel lblNewLabel_5_1 = new JLabel(product);
+		lblNewLabel_5_1.setPreferredSize(new Dimension(150, 15));
+		lblNewLabel_5_1.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblNewLabel_5_1 = new GridBagConstraints();
+		gbc_lblNewLabel_5_1.fill = GridBagConstraints.BOTH;
+		gbc_lblNewLabel_5_1.insets = new Insets(0, 10, 0, 5);
+		gbc_lblNewLabel_5_1.gridx = 1;
+		gbc_lblNewLabel_5_1.gridy = 0;
+		gridbagPanel.add(lblNewLabel_5_1, gbc_lblNewLabel_5_1);
 		
-		//product price label
-		JLabel lblNewLabel_2_2_1 = new JLabel("12999");
-		lblNewLabel_2_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblNewLabel_2_2_1 = new GridBagConstraints();
-		gbc_lblNewLabel_2_2_1.ipadx = 20;
-		gbc_lblNewLabel_2_2_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblNewLabel_2_2_1.gridwidth = 2;
-		gbc_lblNewLabel_2_2_1.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel_2_2_1.gridx = 2;
-		gbc_lblNewLabel_2_2_1.gridy = 0;
-		panel_4_2_1.add(lblNewLabel_2_2_1, gbc_lblNewLabel_2_2_1);
+		//Glue 填充物	
+		Component horizontalGlue_3_1 = Box.createHorizontalGlue();
+		horizontalGlue_3_1.setPreferredSize(new Dimension(25, 0));
+		GridBagConstraints gbc_horizontalGlue_3_1 = new GridBagConstraints();
+		gbc_horizontalGlue_3_1.insets = new Insets(0, 5, 0, 5);
+		gbc_horizontalGlue_3_1.gridx = 2;
+		gbc_horizontalGlue_3_1.gridy = 0;
+		gridbagPanel.add(horizontalGlue_3_1, gbc_horizontalGlue_3_1);
 		
-		//Glue 填充物
-		Component horizontalGlue_2_1 = Box.createHorizontalGlue();
-		GridBagConstraints gbc_horizontalGlue_2_1 = new GridBagConstraints();
-		gbc_horizontalGlue_2_1.weightx = 1.0;
-		gbc_horizontalGlue_2_1.anchor = GridBagConstraints.EAST;
-		gbc_horizontalGlue_2_1.insets = new Insets(0, 0, 0, 5);
-		gbc_horizontalGlue_2_1.gridx = 4;
-		gbc_horizontalGlue_2_1.gridy = 0;
-		panel_4_2_1.add(horizontalGlue_2_1, gbc_horizontalGlue_2_1);
+		//product price label		
+		JLabel lblNewLabel_6_1 = new JLabel(price);
+		lblNewLabel_6_1.setPreferredSize(new Dimension(50, 15));
+		lblNewLabel_6_1.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblNewLabel_6_1 = new GridBagConstraints();
+		gbc_lblNewLabel_6_1.ipadx = 5;
+		gbc_lblNewLabel_6_1.fill = GridBagConstraints.BOTH;
+		gbc_lblNewLabel_6_1.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_6_1.gridx = 3;
+		gbc_lblNewLabel_6_1.gridy = 0;
+		gridbagPanel.add(lblNewLabel_6_1, gbc_lblNewLabel_6_1);
+		
+		//Glue 填充物		
+		Component horizontalGlue_4_1 = Box.createHorizontalGlue();
+		horizontalGlue_4_1.setPreferredSize(new Dimension(20, 0));
+		GridBagConstraints gbc_horizontalGlue_4_1 = new GridBagConstraints();
+		gbc_horizontalGlue_4_1.weightx = 1.0;
+		gbc_horizontalGlue_4_1.insets = new Insets(0, 0, 0, 5);
+		gbc_horizontalGlue_4_1.gridx = 4;
+		gbc_horizontalGlue_4_1.gridy = 0;
+		gridbagPanel.add(horizontalGlue_4_1, gbc_horizontalGlue_4_1);
 		
 		//plus btn 
-		JButton plusBtn = PlusPtn.createJButton("", new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"), false, false);
+		JButton plusBtn = imageBtn.createJButton("/asset/plusBtn.png");
 		GridBagConstraints gbc_plusBtn = new GridBagConstraints();
-		gbc_plusBtn.insets = new Insets(0, 0, 0, 5);
+		gbc_plusBtn.ipadx = 1;
+		gbc_plusBtn.insets = new Insets(0, 35, 0, 5);
 		gbc_plusBtn.gridx = 5;
 		gbc_plusBtn.gridy = 0;
-		panel_4_2_1.add(plusBtn, gbc_plusBtn);
+		gridbagPanel.add(plusBtn, gbc_plusBtn);
 		
-		//product amount text field
+		//product amount text field			
 		textField = new JTextField();
 		textField.setText("0");
 		textField.setPreferredSize(new Dimension(5, 21));
 		textField.setMinimumSize(new Dimension(5, 21));
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setColumns(10);
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 0, 5);
-		gbc_textField.gridx = 6;
-		gbc_textField.gridy = 0;
-		panel_4_2_1.add(textField, gbc_textField);
+		textField.setColumns(3);
+		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
+		gbc_textField_2.ipadx = 1;
+		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_2.insets = new Insets(0, 0, 0, 5);
+		gbc_textField_2.gridx = 6;
+		gbc_textField_2.gridy = 0;
+		gridbagPanel.add(textField, gbc_textField_2);
 		
 		//minus btn
-		JButton minusBtn = PlusPtn.createJButton("", new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\minusBtn.png"), false, false);
+		JButton minusBtn = imageBtn.createJButton("/asset/minusBtn.png");
 		GridBagConstraints gbc_minusBtn = new GridBagConstraints();
+		gbc_minusBtn.ipadx = 1;
 		gbc_minusBtn.insets = new Insets(0, 0, 0, 5);
 		gbc_minusBtn.gridx = 7;
 		gbc_minusBtn.gridy = 0;
-		panel_4_2_1.add(minusBtn, gbc_minusBtn);
+		gridbagPanel.add(minusBtn, gbc_minusBtn);
 		
 		//delete btn
-		JButton deleteBtn = PlusPtn.createJButton("", new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\deleteBtn.png"), false, false);
+		JButton deleteBtn = imageBtn.createJButton("/asset/deleteBtn.png");
 		GridBagConstraints gbc_deleteBtn = new GridBagConstraints();
+		gbc_deleteBtn.ipadx = 1;
 		gbc_deleteBtn.insets = new Insets(0, 0, 0, 5);
 		gbc_deleteBtn.gridx = 8;
 		gbc_deleteBtn.gridy = 0;
-		panel_4_2_1.add(deleteBtn, gbc_deleteBtn);
+		gridbagPanel.add(deleteBtn, gbc_deleteBtn);	
+		
+		//Glue 填充物	
+		Component horizontalGlue_4_1_1 = Box.createHorizontalGlue();
+		horizontalGlue_4_1_1.setPreferredSize(new Dimension(10, 0));
+		GridBagConstraints gbc_horizontalGlue_4_1_1 = new GridBagConstraints();
+		gbc_horizontalGlue_4_1_1.gridx = 9;
+		gbc_horizontalGlue_4_1_1.gridy = 0;
+		gridbagPanel.add(horizontalGlue_4_1_1, gbc_horizontalGlue_4_1_1);
 		
 	}
 }
