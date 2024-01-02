@@ -45,7 +45,7 @@ public class orderAddUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField_2;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -126,86 +126,142 @@ public class orderAddUI extends JFrame {
 		btnNewButton_1.setContentAreaFilled(false);
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setBackground(Color.WHITE);
-		btnNewButton_1.setBounds(487, 334, 77, 32);
+		btnNewButton_1.setBounds(285, 21, 77, 32);
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\AddBtn.png"));
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 83, 554, 211);
-		contentPane.add(panel_3);
-		panel_3.setLayout(null);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 80, 554, 217);
+		contentPane.add(scrollPane);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(10, 5, 534, 196);
-		panel_3.add(panel_4);
-		GridBagLayout gbl_panel_4 = new GridBagLayout();
-		gbl_panel_4.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel_4.rowHeights = new int[]{0, 0};
-		gbl_panel_4.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_4.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel_4.setLayout(gbl_panel_4);
+		JPanel panel_3_1_1 = new JPanel();
+		scrollPane.setViewportView(panel_3_1_1);
+		panel_3_1_1.setPreferredSize(new Dimension(213, 20));
+		panel_3_1_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel lblNewLabel_1 = new JLabel("name");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblNewLabel_1.ipadx = 20;
-		gbc_lblNewLabel_1.gridwidth = 2;
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 0;
-		panel_4.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		JPanel panel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		panel_3_1_1.add(panel);
 		
-		JLabel lblNewLabel_2 = new JLabel("price");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblNewLabel_2.ipadx = 20;
-		gbc_lblNewLabel_2.gridwidth = 2;
-		gbc_lblNewLabel_2.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel_2.gridx = 2;
-		gbc_lblNewLabel_2.gridy = 0;
-		panel_4.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		Component horizontalGlue_2 = Box.createHorizontalGlue();
+		horizontalGlue_2.setPreferredSize(new Dimension(50, 0));
+		panel.add(horizontalGlue_2);
+		
+		JLabel lblNewLabel_1 = new JLabel("Item");
+		panel.add(lblNewLabel_1);
 		
 		Component horizontalGlue = Box.createHorizontalGlue();
-		GridBagConstraints gbc_horizontalGlue = new GridBagConstraints();
-		gbc_horizontalGlue.gridwidth = 3;
-		gbc_horizontalGlue.weightx = 1.0;
-		gbc_horizontalGlue.fill = GridBagConstraints.HORIZONTAL;
-		gbc_horizontalGlue.insets = new Insets(0, 0, 0, 5);
-		gbc_horizontalGlue.gridx = 4;
-		gbc_horizontalGlue.gridy = 0;
-		panel_4.add(horizontalGlue, gbc_horizontalGlue);
+		horizontalGlue.setPreferredSize(new Dimension(90, 0));
+		panel.add(horizontalGlue);
 		
-		JButton btnNewButton_2_2_1_2 = new JButton("");
-		btnNewButton_2_2_1_2.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"));
-		btnNewButton_2_2_1_2.setContentAreaFilled(false);
-		btnNewButton_2_2_1_2.setBorderPainted(false);
-		GridBagConstraints gbc_btnNewButton_2_2_1_2 = new GridBagConstraints();
-		gbc_btnNewButton_2_2_1_2.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton_2_2_1_2.gridx = 7;
-		gbc_btnNewButton_2_2_1_2.gridy = 0;
-		panel_4.add(btnNewButton_2_2_1_2, gbc_btnNewButton_2_2_1_2);
+		JLabel lblNewLabel_2 = new JLabel("Price");
+		panel.add(lblNewLabel_2);
 		
-		textField_2 = new JTextField();
-		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_2.setText("0");
-		textField_2.setMinimumSize(new Dimension(5, 21));
-		textField_2.setPreferredSize(new Dimension(5, 21));
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.insets = new Insets(0, 0, 0, 5);
-		gbc_textField_2.gridx = 8;
-		gbc_textField_2.gridy = 0;
-		panel_4.add(textField_2, gbc_textField_2);
-		textField_2.setColumns(10);
+		Component horizontalGlue_1 = Box.createHorizontalGlue();
+		horizontalGlue_1.setPreferredSize(new Dimension(130, 0));
+		panel.add(horizontalGlue_1);
 		
-		JButton btnNewButton_2_1_1_1_2 = new JButton("");
-		btnNewButton_2_1_1_1_2.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\minusBtn.png"));
-		btnNewButton_2_1_1_1_2.setContentAreaFilled(false);
-		btnNewButton_2_1_1_1_2.setBorderPainted(false);
-		GridBagConstraints gbc_btnNewButton_2_1_1_1_2 = new GridBagConstraints();
-		gbc_btnNewButton_2_1_1_1_2.gridx = 9;
-		gbc_btnNewButton_2_1_1_1_2.gridy = 0;
-		panel_4.add(btnNewButton_2_1_1_1_2, gbc_btnNewButton_2_1_1_1_2);
+		JLabel lblNewLabel_2_1 = new JLabel("Amount");
+		panel.add(lblNewLabel_2_1);
+		
+		Component horizontalGlue_1_1 = Box.createHorizontalGlue();
+		horizontalGlue_1_1.setPreferredSize(new Dimension(140, 0));
+		panel.add(horizontalGlue_1_1);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setPreferredSize(new Dimension(530, 1));
+		panel_3_1_1.add(panel_1);
+		
+		JPanel panel_4_2_1 = new JPanel();
+		panel_3_1_1.add(panel_4_2_1);
+		GridBagLayout gbl_panel_4_2_1 = new GridBagLayout();
+		gbl_panel_4_2_1.columnWidths = new int[]{0, 30, 30, 30, 30, 30, 30, 0, 0, 0, 0};
+		gbl_panel_4_2_1.rowHeights = new int[]{0, 0};
+		gbl_panel_4_2_1.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_4_2_1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panel_4_2_1.setLayout(gbl_panel_4_2_1);
+		
+		JLabel lblNewLabel_1_2_1 = new JLabel("bodyShape_coolSculpting");
+		lblNewLabel_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblNewLabel_1_2_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1_2_1.ipadx = 20;
+		gbc_lblNewLabel_1_2_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblNewLabel_1_2_1.gridwidth = 2;
+		gbc_lblNewLabel_1_2_1.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_1_2_1.gridx = 0;
+		gbc_lblNewLabel_1_2_1.gridy = 0;
+		panel_4_2_1.add(lblNewLabel_1_2_1, gbc_lblNewLabel_1_2_1);
+		
+		JLabel lblNewLabel_2_2_1 = new JLabel("12999");
+		lblNewLabel_2_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblNewLabel_2_2_1 = new GridBagConstraints();
+		gbc_lblNewLabel_2_2_1.ipadx = 20;
+		gbc_lblNewLabel_2_2_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblNewLabel_2_2_1.gridwidth = 2;
+		gbc_lblNewLabel_2_2_1.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_2_2_1.gridx = 2;
+		gbc_lblNewLabel_2_2_1.gridy = 0;
+		panel_4_2_1.add(lblNewLabel_2_2_1, gbc_lblNewLabel_2_2_1);
+		
+		Component horizontalGlue_2_1 = Box.createHorizontalGlue();
+		GridBagConstraints gbc_horizontalGlue_2_1 = new GridBagConstraints();
+		gbc_horizontalGlue_2_1.weightx = 1.0;
+		gbc_horizontalGlue_2_1.anchor = GridBagConstraints.EAST;
+		gbc_horizontalGlue_2_1.insets = new Insets(0, 0, 0, 5);
+		gbc_horizontalGlue_2_1.gridx = 4;
+		gbc_horizontalGlue_2_1.gridy = 0;
+		panel_4_2_1.add(horizontalGlue_2_1, gbc_horizontalGlue_2_1);
+		
+		JButton btnNewButton_2_2_1_2_2_1 = new JButton("");
+		btnNewButton_2_2_1_2_2_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\plusBtn.png"));
+		btnNewButton_2_2_1_2_2_1.setContentAreaFilled(false);
+		btnNewButton_2_2_1_2_2_1.setBorderPainted(false);
+		GridBagConstraints gbc_btnNewButton_2_2_1_2_2_1 = new GridBagConstraints();
+		gbc_btnNewButton_2_2_1_2_2_1.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton_2_2_1_2_2_1.gridx = 5;
+		gbc_btnNewButton_2_2_1_2_2_1.gridy = 0;
+		panel_4_2_1.add(btnNewButton_2_2_1_2_2_1, gbc_btnNewButton_2_2_1_2_2_1);
+		
+		textField = new JTextField();
+		textField.setText("0");
+		textField.setPreferredSize(new Dimension(5, 21));
+		textField.setMinimumSize(new Dimension(5, 21));
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setColumns(10);
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.insets = new Insets(0, 0, 0, 5);
+		gbc_textField.gridx = 6;
+		gbc_textField.gridy = 0;
+		panel_4_2_1.add(textField, gbc_textField);
+		
+		JButton btnNewButton_2_1_1_1_2_3_1 = new JButton("");
+		btnNewButton_2_1_1_1_2_3_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\minusBtn.png"));
+		btnNewButton_2_1_1_1_2_3_1.setContentAreaFilled(false);
+		btnNewButton_2_1_1_1_2_3_1.setBorderPainted(false);
+		GridBagConstraints gbc_btnNewButton_2_1_1_1_2_3_1 = new GridBagConstraints();
+		gbc_btnNewButton_2_1_1_1_2_3_1.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton_2_1_1_1_2_3_1.gridx = 7;
+		gbc_btnNewButton_2_1_1_1_2_3_1.gridy = 0;
+		panel_4_2_1.add(btnNewButton_2_1_1_1_2_3_1, gbc_btnNewButton_2_1_1_1_2_3_1);
+		
+		JButton btnNewButton_2_1_1_1_2_2_2_1 = new JButton("");
+		btnNewButton_2_1_1_1_2_2_2_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\deleteBtn.png"));
+		btnNewButton_2_1_1_1_2_2_2_1.setContentAreaFilled(false);
+		btnNewButton_2_1_1_1_2_2_2_1.setBorderPainted(false);
+		GridBagConstraints gbc_btnNewButton_2_1_1_1_2_2_2_1 = new GridBagConstraints();
+		gbc_btnNewButton_2_1_1_1_2_2_2_1.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton_2_1_1_1_2_2_2_1.gridx = 8;
+		gbc_btnNewButton_2_1_1_1_2_2_2_1.gridy = 0;
+		panel_4_2_1.add(btnNewButton_2_1_1_1_2_2_2_1, gbc_btnNewButton_2_1_1_1_2_2_2_1);
+		
+		JButton btnNewButton_1_1 = new JButton("");
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\checkOutBBtn.png"));
+		btnNewButton_1_1.setContentAreaFilled(false);
+		btnNewButton_1_1.setBorderPainted(false);
+		btnNewButton_1_1.setBackground(Color.WHITE);
+		btnNewButton_1_1.setBounds(441, 318, 123, 32);
+		contentPane.add(btnNewButton_1_1);
 	}
 }
