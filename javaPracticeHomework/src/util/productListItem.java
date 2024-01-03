@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.Box;
 import javax.swing.Icon;
@@ -74,15 +76,6 @@ public class productListItem {
 		gbc_horizontalGlue_4_1.gridy = 0;
 		gridbagPanel.add(horizontalGlue_4_1, gbc_horizontalGlue_4_1);
 		
-		//plus btn 
-		JButton plusBtn = imageBtn.createJButton("/asset/plusBtn.png");
-		GridBagConstraints gbc_plusBtn = new GridBagConstraints();
-		gbc_plusBtn.ipadx = 1;
-		gbc_plusBtn.insets = new Insets(0, 35, 0, 5);
-		gbc_plusBtn.gridx = 5;
-		gbc_plusBtn.gridy = 0;
-		gridbagPanel.add(plusBtn, gbc_plusBtn);
-		
 		//product amount text field			
 		textField = new JTextField();
 		textField.setText("0");
@@ -98,8 +91,32 @@ public class productListItem {
 		gbc_textField_2.gridy = 0;
 		gridbagPanel.add(textField, gbc_textField_2);
 		
+		//plus btn 
+		JButton plusBtn = imageBtn.createJButton("/asset/plusBtn.png");
+		plusBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Integer na = Integer.parseInt(textField.getText()) + 1;
+				textField.setText(na.toString());
+			}
+		});
+		GridBagConstraints gbc_plusBtn = new GridBagConstraints();
+		gbc_plusBtn.ipadx = 1;
+		gbc_plusBtn.insets = new Insets(0, 35, 0, 5);
+		gbc_plusBtn.gridx = 5;
+		gbc_plusBtn.gridy = 0;
+		gridbagPanel.add(plusBtn, gbc_plusBtn);
+		
 		//minus btn
 		JButton minusBtn = imageBtn.createJButton("/asset/minusBtn.png");
+		minusBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Integer na = Integer.parseInt(textField.getText());
+				if (na > 0) na = na - 1;
+				textField.setText(na.toString());
+			}
+		});
 		GridBagConstraints gbc_minusBtn = new GridBagConstraints();
 		gbc_minusBtn.ipadx = 1;
 		gbc_minusBtn.insets = new Insets(0, 0, 0, 5);
@@ -109,6 +126,14 @@ public class productListItem {
 		
 		//delete btn
 		JButton deleteBtn = imageBtn.createJButton("/asset/deleteBtn.png");
+		deleteBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				fatherPanel.remove(gridbagPanel);
+				fatherPanel.revalidate();
+				fatherPanel.repaint();
+			}
+		});
 		GridBagConstraints gbc_deleteBtn = new GridBagConstraints();
 		gbc_deleteBtn.ipadx = 1;
 		gbc_deleteBtn.insets = new Insets(0, 0, 0, 5);
@@ -124,5 +149,7 @@ public class productListItem {
 		gbc_horizontalGlue_4_1_1.gridy = 0;
 		gridbagPanel.add(horizontalGlue_4_1_1, gbc_horizontalGlue_4_1_1);
 		
+	
+
 	}
 }
