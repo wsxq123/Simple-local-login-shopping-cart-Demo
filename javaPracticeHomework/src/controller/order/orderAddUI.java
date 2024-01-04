@@ -20,7 +20,9 @@ import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controller.member.logInPageUI;
 import dao.impl.productDaoImpl;
+import model.order_product;
 import model.product;
 import util.productListItem;
 
@@ -114,7 +116,8 @@ public class orderAddUI extends JFrame {
 		comboBox.setEditable(true);
 		comboBox.setBounds(33, 28, 219, 25);
 		contentPane.add(comboBox);
-
+		
+		//抓DB product table 的 data 來填進下拉式選單
 		productDaoImpl pd = new productDaoImpl();
 		List<product> l = pd.queryAllProduct();
 
@@ -177,12 +180,27 @@ public class orderAddUI extends JFrame {
 		addedItemPanel.add(linePanel);
 
 		JButton btnNewButton_1_1 = new JButton("");
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//把購物車的檔案暫存在本地端(新開一個txt檔存)
+				order_product op = new order_product();
+				
+//				File f = new File();
+				
+				//switch to logInPageUI
+				logInPageUI add=new logInPageUI();
+				add.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_1_1.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/checkOutBBtn.png")));
 		btnNewButton_1_1.setContentAreaFilled(false);
 		btnNewButton_1_1.setBorderPainted(false);
 		btnNewButton_1_1.setBackground(Color.WHITE);
 		btnNewButton_1_1.setBounds(441, 318, 123, 32);
 		contentPane.add(btnNewButton_1_1);
+		
 //===============for test==========================
 		JPanel productItemListPanelEx = new JPanel();
 		productItemListPanelEx.setVisible(false);
@@ -329,8 +347,6 @@ public class orderAddUI extends JFrame {
 					if (item.getProduct_name().equals(comboBox.getSelectedItem().toString())) {
 						// 2.確認下拉式列表選中的item，不是已經存在在addedItemPanel裡的product
 						if (addedItemList.size() != 0) {
-							System.out.println(
-									addedItemList.stream().filter(i -> i.equals(item.getProduct_name())).count());
 							if (addedItemList.stream().filter(i -> i.equals(item.getProduct_name())).count() == 0) {
 								productListItem.createProductListItem(addedItemPanel, item.getProduct_name(),item.getProduct_price().toString());
 								addedItemList.add(item.getProduct_name());

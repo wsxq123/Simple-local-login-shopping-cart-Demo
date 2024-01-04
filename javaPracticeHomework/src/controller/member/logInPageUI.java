@@ -6,8 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.order.checkPageUI;
 import controller.order.orderAddUI;
 import controller.seller.sellerLoginUI;
+import dao.impl.memberDaoImpl;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -40,8 +42,8 @@ public class logInPageUI extends JFrame {
 	private JPanel contentPane;
 	private JButton btnNewButton;
 	private JLabel lblNewLabel_2;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField phoneTextField;
+	private JTextField birthDateTextField;
 
 	/**
 	 * Launch the application.
@@ -87,26 +89,42 @@ public class logInPageUI extends JFrame {
 		lblNewLabel.setFont(new Font("Corbel", Font.PLAIN, 40));
 		panel_3.add(lblNewLabel);
 		
+		JLabel warningLabel = new JLabel("Wrong input or No account");
+		warningLabel.setVisible(false);
+		warningLabel.setForeground(Color.RED);
+		contentPane.add(warningLabel);
+		
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(590, 60));
 		contentPane.add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
 		panel_2.setPreferredSize(new Dimension(200, 45));
 		panel_2.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Phone", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.add(panel_2);
 		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setFont(new Font("新細明體", Font.PLAIN, 15));
-		textField.setBorder(null);
-		panel_2.add(textField);
-		textField.setColumns(14);
+		phoneTextField = new JTextField();
+		phoneTextField.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				warningLabel.setVisible(false);
+			}
+		});
+		phoneTextField.setHorizontalAlignment(SwingConstants.CENTER);
+		phoneTextField.setFont(new Font("新細明體", Font.PLAIN, 15));
+		phoneTextField.setBorder(null);
+		panel_2.add(phoneTextField);
+		phoneTextField.setColumns(14);
 		
 		//Prompt word in textField
-		TextPrompt tp = new TextPrompt("Ex: 09xxxxxxxx", textField);
+		TextPrompt tp = new TextPrompt("Ex: 09xxxxxxxx", phoneTextField);
 		tp.setFont(new Font("新細明體", Font.ITALIC, 15));
 		tp.setHorizontalAlignment(SwingConstants.CENTER);
 		tp.setForeground( Color.gray );
@@ -118,19 +136,26 @@ public class logInPageUI extends JFrame {
 		
 		JPanel panel_2_1 = new JPanel();
 		panel_2_1.setPreferredSize(new Dimension(200, 45));
-		panel_2_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Birthdate", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_2_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Birth Date", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_1.add(panel_2_1);
 		panel_2_1.setLayout(new BoxLayout(panel_2_1, BoxLayout.X_AXIS));
 		
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_1.setFont(new Font("新細明體", Font.PLAIN, 15));
-		textField_1.setBorder(null);
-		panel_2_1.add(textField_1);
-		textField_1.setColumns(14);
+		birthDateTextField = new JTextField();
+		birthDateTextField.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				warningLabel.setVisible(false);
+			}
+		});
+		birthDateTextField.setHorizontalAlignment(SwingConstants.CENTER);
+		birthDateTextField.setFont(new Font("新細明體", Font.PLAIN, 15));
+		birthDateTextField.setBorder(null);
+		panel_2_1.add(birthDateTextField);
+		birthDateTextField.setColumns(14);
+		//TODO-Date Picker
 		
 		//Prompt word in textField
-		TextPrompt tp1 = new TextPrompt("Ex: yyyymmdd", textField_1);
+		TextPrompt tp1 = new TextPrompt("Ex: 19900101", birthDateTextField);
 		tp1.setFont(new Font("新細明體", Font.ITALIC, 15));
 		tp1.setHorizontalAlignment(SwingConstants.CENTER);
 		tp1.setForeground( Color.gray );
@@ -141,6 +166,21 @@ public class logInPageUI extends JFrame {
 		panel_1_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton loginBtn = new JButton("");
+		loginBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				memberDaoImpl m =new memberDaoImpl();
+				if(m.queryMemberAccount(phoneTextField.getText(), birthDateTextField.getText())) {
+					checkPageUI add=new checkPageUI();
+					add.setVisible(true);
+					dispose();
+				}else {
+					warningLabel.setVisible(true);
+					System.out.println("wrong input or no account");
+				}
+			}
+		});
 		loginBtn.setMargin(new Insets(2, 2, 2, 2));
 		loginBtn.setIcon(new ImageIcon(logInPageUI.class.getResource("/asset/loginBtn.png")));
 		loginBtn.setContentAreaFilled(false);
@@ -155,6 +195,14 @@ public class logInPageUI extends JFrame {
 		panel_1_1_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton loginBtn_1 = new JButton("");
+		loginBtn_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				registerPageUI add=new registerPageUI();
+				add.setVisible(true);
+				dispose();
+			}
+		});
 		loginBtn_1.setMargin(new Insets(2, 2, 2, 2));
 		loginBtn_1.setIcon(new ImageIcon(logInPageUI.class.getResource("/asset/registerBtn.png")));
 		loginBtn_1.setContentAreaFilled(false);
