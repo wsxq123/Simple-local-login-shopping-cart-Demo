@@ -26,6 +26,7 @@ public class productListItem {
 		
 		//gridbag panel				
 		JPanel gridbagPanel = new JPanel();
+		gridbagPanel.setMaximumSize(new Dimension(32767, 30));
 		fatherPanel.add(gridbagPanel);
 		GridBagLayout gbl_productItemListPanelEx = new GridBagLayout();
 		gbl_productItemListPanelEx.columnWidths = new int[] {0, 0, 0, 46, 0, 0, 30, 30, 0, 0, 0};
@@ -92,7 +93,7 @@ public class productListItem {
 		gridbagPanel.add(textField, gbc_textField_2);
 		
 		//plus btn 
-		JButton plusBtn = imageBtn.createJButton("/asset/plusBtn.png");
+		JButton plusBtn = ImageBtn.createJButton("/asset/plusBtn.png");
 		plusBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -108,7 +109,7 @@ public class productListItem {
 		gridbagPanel.add(plusBtn, gbc_plusBtn);
 		
 		//minus btn
-		JButton minusBtn = imageBtn.createJButton("/asset/minusBtn.png");
+		JButton minusBtn = ImageBtn.createJButton("/asset/minusBtn.png");
 		minusBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -125,7 +126,7 @@ public class productListItem {
 		gridbagPanel.add(minusBtn, gbc_minusBtn);
 		
 		//delete btn
-		JButton deleteBtn = imageBtn.createJButton("/asset/deleteBtn.png");
+		JButton deleteBtn = ImageBtn.createJButton("/asset/deleteBtn.png");
 		deleteBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

@@ -25,7 +25,6 @@ import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 import javax.swing.JTextField;
-import net.miginfocom.swing.MigLayout;
 import util.TextPrompt;
 
 import java.awt.BorderLayout;

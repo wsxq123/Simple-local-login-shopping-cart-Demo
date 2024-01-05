@@ -9,10 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import model.order_product;
 import util.productListItem;
 
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.Insets;
@@ -25,11 +28,15 @@ import java.awt.CardLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 public class test3 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -63,95 +70,63 @@ public class test3 extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(100, 24, 141, 68);
+		panel.setBounds(100, 24, 326, 34);
 		contentPane.add(panel);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-		System.out.println(panel.getHeight());
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JLabel lblNewLabel_1 = new JLabel("name");
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel = new JLabel("price");
+		panel.add(lblNewLabel);
+		
+		textField = new JTextField();
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("get test1");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+//				JTextField jtf = new JTextField();
+//				jtf = (JTextField) panel.getComponent(0);
+//				System.out.println(jtf.getText());
+				
+//				order_product op = new order_product();
+//				
+//				for(Component c:panel.getComponents()) {
+//					
+//				}
+				
+				JLabel jl = (JLabel) panel.getComponent(0);
+				System.out.println(jl.getText());
+				JLabel jl2 = (JLabel) panel.getComponent(1);
+				System.out.println(jl2.getText());
+				JTextField jtf = (JTextField) panel.getComponent(2);
+				System.out.println(jtf.getText());
+				
+				
+			}
+		});
+		btnNewButton.setBounds(441, 218, 87, 23);
+		contentPane.add(btnNewButton);
 		
 		JPanel panel_1 = new JPanel();
-		panel.add(panel_1);
+		panel_1.setBounds(100, 96, 338, 108);
+		contentPane.add(panel_1);
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
 		
-		JButton btnNewButton = new JButton("New button");
-		panel_1.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		panel_1.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		panel_1.add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("New button");
-		panel_1.add(btnNewButton_3);
-		
-		JButton btnNewButton_4 = new JButton("New button");
-		panel_1.add(btnNewButton_4);
-		
-		JButton btnNewButton_5 = new JButton("New button");
-		panel_1.add(btnNewButton_5);
-		
 		JPanel panel_2 = new JPanel();
-		panel.add(panel_2);
+		panel_2.setMaximumSize(new Dimension(32767, 30));
+		panel_1.add(panel_2);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		panel_2.add(scrollBar);
+		JPanel panel_2_1 = new JPanel();
+		panel_2_1.setMaximumSize(new Dimension(32767, 30));
+		panel_1.add(panel_2_1);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 112, 174, 55);
-		contentPane.add(scrollPane);
-		
-		JPanel panel_3 = new JPanel();
-		scrollPane.setViewportView(panel_3);
-		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.Y_AXIS));
-		
-		JButton btnNewButton_6 = new JButton("New button");
-		panel_3.add(btnNewButton_6);
-		
-		JButton btnNewButton_8 = new JButton("New button");
-		panel_3.add(btnNewButton_8);
-		
-		JButton btnNewButton_7 = new JButton("New button");
-		panel_3.add(btnNewButton_7);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(327, 24, 116, 93);
-		contentPane.add(scrollPane_1);
-		
-		JPanel panel_4 = new JPanel();
-		scrollPane_1.setViewportView(panel_4);
-		
-		JButton btnNewButton_10 = new JButton("New button");
-		
-		JButton btnNewButton_9 = new JButton("New button");
-		
-		JButton btnNewButton_11 = new JButton("New button");
-		
-		JButton btnNewButton_13 = new JButton("New button");
-		
-		JButton btnNewButton_12 = new JButton("New button");
-		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
-		panel_4.add(btnNewButton_10);
-		panel_4.add(btnNewButton_9);
-		panel_4.add(btnNewButton_11);
-		panel_4.add(btnNewButton_13);
-		panel_4.add(btnNewButton_12);
-		
-		JButton btnNewButton_14 = new JButton("New button");
-		panel_4.add(btnNewButton_14);
-		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(307, 161, 141, 73);
-		contentPane.add(scrollPane_2);
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		scrollPane_2.setColumnHeaderView(lblNewLabel);
-		
-		System.out.println(scrollPane_1.getHeight());
-		System.out.println(panel_4.getSize());
-		System.out.println(panel_4.getSize().getSize());
-		System.out.println(panel_4.getSize().getHeight());
-		System.out.println(panel_4.getHeight());
-		
+		JPanel panel_2_1_1 = new JPanel();
+		panel_2_1_1.setMaximumSize(new Dimension(32767, 30));
+		panel_1.add(panel_2_1_1);
 		
 //		JPanel panel_4_2_1 = new JPanel();
 //		contentPane.add(panel_4_2_1);
