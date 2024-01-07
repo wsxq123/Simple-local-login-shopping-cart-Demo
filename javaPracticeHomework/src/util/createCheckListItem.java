@@ -1,5 +1,6 @@
 package util;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -7,31 +8,39 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controller.order.checkPageUI;
 
-public class checkListItem {
-	public static void createCheckListItem(JPanel fatherPanel,String product,String price,String amount,String total) {
-		
-		//gridbag panel	
+public class createCheckListItem {
+	public static void create(JPanel fatherPanel, String product, String price, String amount, String total,
+			int switchCode) {
+
+		// gridbag panel
 		JPanel checkListItemPanel = new JPanel();
+		checkListItemPanel.setBackground(Color.WHITE);
 		checkListItemPanel.setPreferredSize(new Dimension(520, 45));
 		checkListItemPanel.setMaximumSize(new Dimension(32767, 45));
 		fatherPanel.add(checkListItemPanel);
 		GridBagLayout gbl_checkListItemPanel = new GridBagLayout();
-		gbl_checkListItemPanel.columnWidths = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_checkListItemPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_checkListItemPanel.rowWeights = new double[]{0.0};
+		gbl_checkListItemPanel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_checkListItemPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				Double.MIN_VALUE };
+		gbl_checkListItemPanel.rowWeights = new double[] { 0.0 };
 		checkListItemPanel.setLayout(gbl_checkListItemPanel);
-		
-		//Glue 填充物	
+
+		// Glue 填充物
 		Component horizontalGlue_3 = Box.createHorizontalGlue();
 		GridBagConstraints gbc_horizontalGlue_3 = new GridBagConstraints();
 		gbc_horizontalGlue_3.ipadx = 5;
@@ -39,8 +48,8 @@ public class checkListItem {
 		gbc_horizontalGlue_3.gridx = 0;
 		gbc_horizontalGlue_3.gridy = 0;
 		checkListItemPanel.add(horizontalGlue_3, gbc_horizontalGlue_3);
-		
-		//product name label	
+
+		// product name label
 		JLabel productNameLabel = new JLabel(product);
 		productNameLabel.setPreferredSize(new Dimension(150, 15));
 		productNameLabel.setMinimumSize(new Dimension(150, 15));
@@ -51,8 +60,8 @@ public class checkListItem {
 		gbc_productNameLabel.gridx = 1;
 		gbc_productNameLabel.gridy = 0;
 		checkListItemPanel.add(productNameLabel, gbc_productNameLabel);
-		
-		//Glue 填充物	
+
+		// Glue 填充物
 		Component horizontalGlue_3_1 = Box.createHorizontalGlue();
 		horizontalGlue_3_1.setPreferredSize(new Dimension(10, 0));
 		GridBagConstraints gbc_horizontalGlue_3_1 = new GridBagConstraints();
@@ -61,8 +70,8 @@ public class checkListItem {
 		gbc_horizontalGlue_3_1.gridx = 2;
 		gbc_horizontalGlue_3_1.gridy = 0;
 		checkListItemPanel.add(horizontalGlue_3_1, gbc_horizontalGlue_3_1);
-		
-		//product price label	
+
+		// product price label
 		JLabel productPriceLabel = new JLabel(price);
 		productPriceLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		productPriceLabel.setPreferredSize(new Dimension(45, 15));
@@ -71,8 +80,8 @@ public class checkListItem {
 		gbc_productPriceLabel.gridx = 3;
 		gbc_productPriceLabel.gridy = 0;
 		checkListItemPanel.add(productPriceLabel, gbc_productPriceLabel);
-		
-		//Glue 填充物	
+
+		// Glue 填充物
 		Component horizontalGlue_4 = Box.createHorizontalGlue();
 		GridBagConstraints gbc_horizontalGlue_4 = new GridBagConstraints();
 		gbc_horizontalGlue_4.insets = new Insets(0, 0, 0, 5);
@@ -80,8 +89,8 @@ public class checkListItem {
 		gbc_horizontalGlue_4.gridx = 4;
 		gbc_horizontalGlue_4.gridy = 0;
 		checkListItemPanel.add(horizontalGlue_4, gbc_horizontalGlue_4);
-		
-		//product amount label
+
+		// product amount label
 		JLabel amountLabel = new JLabel(amount);
 		amountLabel.setPreferredSize(new Dimension(10, 15));
 		amountLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -91,8 +100,8 @@ public class checkListItem {
 		gbc_amountLabel.gridx = 5;
 		gbc_amountLabel.gridy = 0;
 		checkListItemPanel.add(amountLabel, gbc_amountLabel);
-		
-		//Glue 填充物	
+
+		// Glue 填充物
 		Component horizontalGlue_5 = Box.createHorizontalGlue();
 		GridBagConstraints gbc_horizontalGlue_5 = new GridBagConstraints();
 		gbc_horizontalGlue_5.insets = new Insets(0, 0, 0, 5);
@@ -100,8 +109,8 @@ public class checkListItem {
 		gbc_horizontalGlue_5.gridx = 6;
 		gbc_horizontalGlue_5.gridy = 0;
 		checkListItemPanel.add(horizontalGlue_5, gbc_horizontalGlue_5);
-		
-		//product total label
+
+		// product total label
 		JLabel productTotalLabel = new JLabel(total);
 		productTotalLabel.setPreferredSize(new Dimension(40, 15));
 		productTotalLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -111,8 +120,8 @@ public class checkListItem {
 		gbc_productTotalLabel.gridx = 7;
 		gbc_productTotalLabel.gridy = 0;
 		checkListItemPanel.add(productTotalLabel, gbc_productTotalLabel);
-		
-		//Glue 填充物	
+
+		// Glue 填充物
 		Component horizontalGlue_6 = Box.createHorizontalGlue();
 		GridBagConstraints gbc_horizontalGlue_6 = new GridBagConstraints();
 		gbc_horizontalGlue_6.insets = new Insets(0, 0, 0, 5);
@@ -120,22 +129,23 @@ public class checkListItem {
 		gbc_horizontalGlue_6.gridx = 8;
 		gbc_horizontalGlue_6.gridy = 0;
 		checkListItemPanel.add(horizontalGlue_6, gbc_horizontalGlue_6);
-		
-		//delete btn
-		JButton deleteBtn = ImageBtn.createJButton("/asset/deleteBtn.png");
-		deleteBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				fatherPanel.remove(checkListItemPanel);
-				fatherPanel.revalidate();
-				fatherPanel.repaint();
-			}
-		});
-		GridBagConstraints gbc_deleteBtn = new GridBagConstraints();
-		gbc_deleteBtn.insets = new Insets(0, 0, 0, 5);
-		gbc_deleteBtn.gridx = 9;
-		gbc_deleteBtn.gridy = 0;
-		checkListItemPanel.add(deleteBtn, gbc_deleteBtn);	
-		
+
+		// delete btn
+		if (switchCode == 1) {
+			JButton deleteBtn = ImageBtn.createJButton("/asset/deleteBtn.png");
+			deleteBtn.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					fatherPanel.remove(checkListItemPanel);
+					fatherPanel.revalidate();
+					fatherPanel.repaint();
+				}
+			});
+			GridBagConstraints gbc_deleteBtn = new GridBagConstraints();
+			gbc_deleteBtn.insets = new Insets(0, 0, 0, 5);
+			gbc_deleteBtn.gridx = 9;
+			gbc_deleteBtn.gridy = 0;
+			checkListItemPanel.add(deleteBtn, gbc_deleteBtn);
+		}
 	}
 }

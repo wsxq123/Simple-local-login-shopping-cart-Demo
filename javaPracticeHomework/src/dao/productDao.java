@@ -12,6 +12,8 @@ public interface productDao {
 // read
 	// single product search(productSearchUI)
 	product queryProduct(int product_id);
+	
+	product queryProductIDByName(String product_name);
 
 	// products search(productSearchUI)
 	List<product> queryAllProduct();

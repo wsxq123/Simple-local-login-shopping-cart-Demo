@@ -21,11 +21,16 @@ import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.List;
+
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
 import javax.swing.JTextField;
 import util.TextPrompt;
+import util.cal;
+import util.dynamicClock;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -38,11 +43,11 @@ import javax.swing.border.EtchedBorder;
 public class logInPageUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JButton btnNewButton;
 	private JLabel lblNewLabel_2;
 	private JTextField phoneTextField;
 	private JTextField birthDateTextField;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -67,20 +72,27 @@ public class logInPageUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 590, 415);
 		contentPane = new JPanel();
-		contentPane.setPreferredSize(new Dimension(590, 10));
 		contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		dynamicClock.createDynamicClock(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.WHITE);
+		panel_4.setBounds(0, 0, 574, 376);
+		panel_4.setPreferredSize(new Dimension(590, 365));
+		contentPane.add(panel_4);
 		
 		Component verticalStrut_1_1 = Box.createVerticalStrut(20);
+		panel_4.add(verticalStrut_1_1);
 		verticalStrut_1_1.setPreferredSize(new Dimension(590, 5));
-		contentPane.add(verticalStrut_1_1);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
+		panel_4.add(panel_3);
 		panel_3.setPreferredSize(new Dimension(590, 60));
-		contentPane.add(panel_3);
 		
 		JLabel lblNewLabel = new JLabel("Login");
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -89,16 +101,18 @@ public class logInPageUI extends JFrame {
 		panel_3.add(lblNewLabel);
 		
 		JLabel warningLabel = new JLabel("Wrong input or No account");
+		panel_4.add(warningLabel);
 		warningLabel.setVisible(false);
 		warningLabel.setForeground(Color.RED);
-		contentPane.add(warningLabel);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel_4.add(panel);
 		panel.setPreferredSize(new Dimension(590, 60));
-		contentPane.add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
 		panel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -124,16 +138,15 @@ public class logInPageUI extends JFrame {
 		
 		//Prompt word in textField
 		TextPrompt tp = new TextPrompt("Ex: 09xxxxxxxx", phoneTextField);
-		tp.setFont(new Font("新細明體", Font.ITALIC, 15));
-		tp.setHorizontalAlignment(SwingConstants.CENTER);
-		tp.setForeground( Color.gray );
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_4.add(panel_1);
 		panel_1.setPreferredSize(new Dimension(590, 60));
-		contentPane.add(panel_1);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel panel_2_1 = new JPanel();
+		panel_2_1.setBackground(Color.WHITE);
 		panel_2_1.setPreferredSize(new Dimension(200, 45));
 		panel_2_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Birth Date", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_1.add(panel_2_1);
@@ -155,13 +168,11 @@ public class logInPageUI extends JFrame {
 		
 		//Prompt word in textField
 		TextPrompt tp1 = new TextPrompt("Ex: 19900101", birthDateTextField);
-		tp1.setFont(new Font("新細明體", Font.ITALIC, 15));
-		tp1.setHorizontalAlignment(SwingConstants.CENTER);
-		tp1.setForeground( Color.gray );
 		
 		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setBackground(Color.WHITE);
+		panel_4.add(panel_1_1);
 		panel_1_1.setPreferredSize(new Dimension(590, 45));
-		contentPane.add(panel_1_1);
 		panel_1_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton loginBtn = new JButton("");
@@ -171,7 +182,23 @@ public class logInPageUI extends JFrame {
 				
 				memberDaoImpl m =new memberDaoImpl();
 				if(m.queryMemberAccount(phoneTextField.getText(), birthDateTextField.getText())) {
-					checkPageUI add=new checkPageUI();
+					String memberInfo = Integer.toString(m.queryMember(phoneTextField.getText()).getMember_id());
+					cal.addFile("memberInfo.txt", memberInfo);
+					
+					
+					try {
+						String memberInfoFromFile = (String) cal.readFile("memberInfo.txt").readObject();
+						System.out.println(memberInfoFromFile);
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					
+					orderAddUI add=new orderAddUI();
 					add.setVisible(true);
 					dispose();
 				}else {
@@ -189,8 +216,9 @@ public class logInPageUI extends JFrame {
 		panel_1_1.add(loginBtn);
 		
 		JPanel panel_1_1_1 = new JPanel();
+		panel_1_1_1.setBackground(Color.WHITE);
+		panel_4.add(panel_1_1_1);
 		panel_1_1_1.setPreferredSize(new Dimension(590, 45));
-		contentPane.add(panel_1_1_1);
 		panel_1_1_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton loginBtn_1 = new JButton("");
@@ -208,6 +236,12 @@ public class logInPageUI extends JFrame {
 		loginBtn_1.setBorderPainted(false);
 		loginBtn_1.setBackground(Color.WHITE);
 		panel_1_1_1.add(loginBtn_1);
+		tp1.setFont(new Font("新細明體", Font.ITALIC, 15));
+		tp1.setHorizontalAlignment(SwingConstants.CENTER);
+		tp1.setForeground( Color.gray );
+		tp.setFont(new Font("新細明體", Font.ITALIC, 15));
+		tp.setHorizontalAlignment(SwingConstants.CENTER);
+		tp.setForeground( Color.gray );
 		
 	
 	}

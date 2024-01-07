@@ -63,6 +63,31 @@ public class productDaoImpl implements productDao {
 		}
 		return p;
 	}
+	
+	@Override
+	public product queryProductIDByName(String product_name) {
+		Connection conn = dbConnection.getDB();
+		String sql = "select * from beauty_clinic.product where product_name=?";
+		product p = null;
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, product_name);
+
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				p = new product();
+				p.setProduct_id(rs.getInt("product_id"));
+				p.setProduct_name(rs.getString("product_name"));
+				p.setProduct_price(rs.getInt("product_price"));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return p;
+	}
 
 	@Override
 	public List<product> queryAllProduct() {
@@ -127,5 +152,7 @@ public class productDaoImpl implements productDao {
 			e.printStackTrace();
 		}
 	}
+
+	
 
 }

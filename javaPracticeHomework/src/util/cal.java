@@ -1,28 +1,33 @@
 package util;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class cal {
 	
 	//寫入
-	public static ObjectOutputStream addFile(String file)
+	public static void addFile(String file,Object writeObject)
 	{
 		ObjectOutputStream oos=null;
 	
 		try {
 			FileOutputStream fos=new FileOutputStream(file);
 			oos=new ObjectOutputStream(fos);
+			oos.writeObject(writeObject);
+			oos.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return oos;
+		
 	}
 	
 	//讀取
@@ -37,6 +42,19 @@ public class cal {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		return ois;
 	}
+	
+	//刪除
+	public static void deleteFile(String file)
+	{		
+		File myObj = new File(file); 
+	    if (myObj.delete()) { 
+	      System.out.println("Deleted the file: " + myObj.getName());
+	    } else {
+	      System.out.println("Failed to delete the file.");
+	    } 
+	}
+	
 }

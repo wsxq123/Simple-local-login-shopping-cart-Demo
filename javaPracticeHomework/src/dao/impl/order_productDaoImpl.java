@@ -12,7 +12,7 @@ import dao.order_productDao;
 import model.order_product;
 import model.product;
 
-public class order_productDaoImpl implements order_productDao{
+public class order_productDaoImpl implements order_productDao {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -22,8 +22,8 @@ public class order_productDaoImpl implements order_productDao{
 	@Override
 	public void createOrder_prduct(order_product op) {
 		Connection conn = dbConnection.getDB();
-		String sql="Insert into beauty_clinic.order_product(order_Number,product_id,amount,cost)" + "values(?,?,?,?)";
-		
+		String sql = "Insert into beauty_clinic.order_product(order_Number,product_id,amount,cost)" + "values(?,?,?,?)";
+
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, op.getOrder_Number());
@@ -39,13 +39,14 @@ public class order_productDaoImpl implements order_productDao{
 	}
 
 	@Override
-	public List<order_product> queryOorder_product(String order_Number) {
+	public List<order_product> queryOrder_product(String order_Number) {
 		Connection conn = dbConnection.getDB();
-		String sql = "select * from beauty_clinic.order_product";
-		List<order_product> l = new ArrayList();
+		String sql = "select * from beauty_clinic.order_product where order_Number = ?";
+		List<order_product> l = new ArrayList<order_product>();
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, order_Number);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -64,6 +65,28 @@ public class order_productDaoImpl implements order_productDao{
 		}
 		return l;
 	}
+
+	@Override
+	public Integer queryOrder_productTotal(String order_Number) {
+		Connection conn = dbConnection.getDB();
+		String sql = "SELECT sum(cost) as total from beauty_clinic.order_product where order_Number = ?";
+		Integer total = 0;
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, order_Number);
+
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				total = rs.getInt("total");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return total;
+	}
+
 
 	@Override
 	public void deleteOrder_prduct(String order_Number) {

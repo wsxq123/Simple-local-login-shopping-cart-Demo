@@ -22,20 +22,28 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.member.logInPageUI;
 import dao.impl.productDaoImpl;
+import model.member;
 import model.order_product;
 import model.product;
+import model.shoppingCart;
 import util.cal;
-import util.productListItem;
+import util.createCheckListItem;
+import util.checkPanelItem;
+import util.dynamicClock;
+import util.createProductListItem;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
@@ -63,6 +71,7 @@ public class orderAddUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JComboBox<String> comboBox;
+	private JLabel promptTextLabel2;
 
 	/**
 	 * Launch the application.
@@ -87,31 +96,34 @@ public class orderAddUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 590, 415);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setBorder(null);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/shoppingCartIconSpot.png")));
-		lblNewLabel.setBounds(543, 19, 21, 25);
-		contentPane.add(lblNewLabel);
-		// set invisible at start
-		lblNewLabel.setVisible(false);
-
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setVisible(false);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBackground(Color.WHITE);
-		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.setBorderPainted(false);
-		btnNewButton.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/shoppingCartIcon.png")));
-		btnNewButton.setBounds(517, 21, 40, 32);
-		contentPane.add(btnNewButton);
+		dynamicClock.createDynamicClock(contentPane,442,10);
+		
+//		JLabel lblNewLabel = new JLabel("");
+//		lblNewLabel.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/shoppingCartIconSpot.png")));
+//		lblNewLabel.setBounds(543, 19, 21, 25);
+//		contentPane.add(lblNewLabel);
+//		// set invisible at start
+//		lblNewLabel.setVisible(false);
+//
+//		JButton btnNewButton = new JButton("");
+//		btnNewButton.setVisible(false);
+//		btnNewButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+//		btnNewButton.setBackground(Color.WHITE);
+//		btnNewButton.setContentAreaFilled(false);
+//		btnNewButton.setBorderPainted(false);
+//		btnNewButton.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/shoppingCartIcon.png")));
+//		btnNewButton.setBounds(517, 21, 40, 32);
+//		contentPane.add(btnNewButton);
 
 		comboBox = new JComboBox<String>();
 		comboBox.setBorder(null);
@@ -143,6 +155,7 @@ public class orderAddUI extends JFrame {
 		addedItemPanel.setLayout(new BoxLayout(addedItemPanel, BoxLayout.Y_AXIS));
 
 		JPanel titlePanel = new JPanel();
+		titlePanel.setBackground(Color.WHITE);
 		titlePanel.setBorder(null);
 		FlowLayout fl_titlePanel = (FlowLayout) titlePanel.getLayout();
 		fl_titlePanel.setAlignment(FlowLayout.LEFT);
@@ -172,43 +185,67 @@ public class orderAddUI extends JFrame {
 		Component horizontalGlue_1_1 = Box.createHorizontalGlue();
 		horizontalGlue_1_1.setPreferredSize(new Dimension(150, 0));
 		titlePanel.add(horizontalGlue_1_1);
+		
+		JLabel promptTextLabel = new JLabel("The item is already selected in the panel!");
+		promptTextLabel.setVisible(false);
+		promptTextLabel.setForeground(Color.RED);
+		promptTextLabel.setFont(UIManager.getFont("List.font"));
+		promptTextLabel.setBounds(10, 63, 269, 15);
+		contentPane.add(promptTextLabel);
+		
+		promptTextLabel2 = new JLabel("No item in panel !");
+		promptTextLabel2.setVisible(false);
+		promptTextLabel2.setForeground(Color.RED);
+		promptTextLabel2.setBounds(10, 63, 242, 15);
+		contentPane.add(promptTextLabel2);
 
-		List<Object[]> shoppingCartList = new ArrayList<Object[]>();
 		JButton btnNewButton_1_1 = new JButton("");
 		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// 蒐集使用者新增在 addedItemPanel 的 product ，裝成一個object
-				if (addedItemPanel.getComponentCount() != 0) {
-					for (int i = 0; i < addedItemPanel.getComponentCount(); i++) {
-						JPanel jp = (JPanel) addedItemPanel.getComponent(i);
-
-						Object[] arr = new Object[3];
-						arr[0] = ((JLabel) jp.getComponent(0)).getText();
-						arr[1] = ((JLabel) jp.getComponent(2)).getText();
-						arr[2] = ((JTextField) jp.getComponent(4)).getText();
-						shoppingCartList.add(arr);
+				//檢查在addedItemPanel的product，若無則回傳null
+				List<String[]> shoppingCartInPanel = checkPanelItem.checkPanel(1, addedItemPanel);
+				
+				int switchCode=0;
+				
+				if(new File("Order.txt").isFile()) {
+					if(shoppingCartInPanel != null) {
+						//panel有item，且有Order.txt
+						switchCode = 1;
+					}else {
+						//panel無item，有Order.txt
+						switchCode = 2;
 					}
 				}else {
-					System.out.println("No item in shopping cart");
+					if(shoppingCartInPanel != null) {
+						//panel有item，無Order.txt
+						switchCode = 3;
+					}
 				}
-				
-				// 把購物車的檔案暫存在本地端(新開一個txt檔存)
-				ObjectOutputStream oos=cal.addFile("Order.txt");
-				try {
-					oos.writeObject(shoppingCartList);
-					
-					// switch to logInPageUI
-					logInPageUI add=new logInPageUI();
-					add.setVisible(true);
-					dispose();
-					
-				} catch (IOException e1) {
-					e1.printStackTrace();
+				//System.out.println("switchCode: "+switchCode );
+				switch (switchCode) {
+					case 1:
+						try {
+							List<String[]> shoppingCartListFromFile = (List<String[]>) cal.readFile("Order.txt").readObject();
+							List<String[]> newList = Stream.concat(shoppingCartInPanel.stream(), shoppingCartListFromFile.stream()).toList();
+							shoppingCartInPanel = newList;
+						} catch (ClassNotFoundException e1) {
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+					case 3:
+						cal.addFile("Order.txt", shoppingCartInPanel);
+					case 2:
+						checkPageUI add = new checkPageUI();
+						add.setVisible(true);
+						dispose();
+						break;
+					default:
+						promptTextLabel.setVisible(false);
+						promptTextLabel2.setVisible(true);
+						System.out.println("Please select item & add to panel!");
 				}
-
-				
-
 			}
 		});
 		btnNewButton_1_1.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/checkOutBBtn.png")));
@@ -217,15 +254,8 @@ public class orderAddUI extends JFrame {
 		btnNewButton_1_1.setBackground(Color.WHITE);
 		btnNewButton_1_1.setBounds(441, 318, 123, 32);
 		contentPane.add(btnNewButton_1_1);
-//		=====================for test====================================
-		
-		JLabel promtTextLable = new JLabel("The item is already selected in the panel!");
-		promtTextLable.setVisible(false);
-		promtTextLable.setForeground(Color.RED);
-		promtTextLable.setFont(new Font("新細明體", Font.PLAIN, 14));
-		promtTextLable.setBounds(10, 63, 269, 15);
-		contentPane.add(promtTextLable);
 
+		
 
 		List<String> addedItemList = new ArrayList<String>();
 
@@ -244,12 +274,13 @@ public class orderAddUI extends JFrame {
 						// 2.確認下拉式列表選中的item，不是已經存在在addedItemPanel裡的product
 						if (addedItemList.size() == 0
 								|| addedItemList.stream().filter(i -> i.equals(item.getProduct_name())).count() == 0) {
-							promtTextLable.setVisible(false);
-							productListItem.createProductListItem(addedItemPanel, item.getProduct_name(),
+							promptTextLabel.setVisible(false);
+							promptTextLabel2.setVisible(false);
+							createProductListItem.create(addedItemPanel, item.getProduct_name(),
 									item.getProduct_price().toString());
 							addedItemList.add(item.getProduct_name());
 						} else {
-							promtTextLable.setVisible(true);
+							promptTextLabel.setVisible(true);
 							System.out.println("already in panel!");
 						}
 						// reRender panel
@@ -264,6 +295,22 @@ public class orderAddUI extends JFrame {
 		addBtn.setBackground(Color.WHITE);
 		addBtn.setBounds(282, 21, 77, 32);
 		contentPane.add(addBtn);
-		addBtn.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/AddBtn.png")));	
+		addBtn.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/AddBtn.png")));
+		
+		JButton btnNewButton_1_1_1 = new JButton("");
+		btnNewButton_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				logInPageUI add = new logInPageUI();
+				add.setVisible(true);					
+				dispose();
+			}
+		});
+		btnNewButton_1_1_1.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/backBtn.png")));
+		btnNewButton_1_1_1.setContentAreaFilled(false);
+		btnNewButton_1_1_1.setBorderPainted(false);
+		btnNewButton_1_1_1.setBackground(Color.WHITE);
+		btnNewButton_1_1_1.setBounds(10, 318, 123, 32);
+		contentPane.add(btnNewButton_1_1_1);
 	}
 }

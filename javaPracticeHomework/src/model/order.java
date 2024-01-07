@@ -5,15 +5,15 @@ public class order {
 	private String order_Number;
 	private String order_Date;
 	private String order_Time;
-	private Integer member_id;
-	private Integer seller_id;
+	private String member_id;
+	private String seller_id;
 	private Integer total;
 
 	public order() {
 		super();
 	}
 
-	public order(String order_Number, String order_Date, String order_Time, Integer member_id, Integer seller_id,
+	public order(String order_Number, String order_Date, String order_Time, String member_id, String seller_id,
 			Integer total) {
 		super();
 		this.order_Number = order_Number;
@@ -44,11 +44,11 @@ public class order {
 		this.order_Time = order_Time;
 	}
 
-	public void setMember_id(Integer member_id) {
+	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
 
-	public void setSeller_id(Integer seller_id) {
+	public void setSeller_id(String seller_id) {
 		this.seller_id = seller_id;
 	}
 
@@ -68,11 +68,11 @@ public class order {
 		return order_Time;
 	}
 
-	public Integer getMember_id() {
+	public String getMember_id() {
 		return member_id;
 	}
 
-	public Integer getSeller_id() {
+	public String getSeller_id() {
 		return seller_id;
 	}
 

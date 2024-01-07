@@ -32,8 +32,8 @@ public class orderDaoImpl implements orderDao{
 			ps.setString(1, o.getOrder_Number());
 			ps.setString(2, o.getOrder_Date());
 			ps.setString(3, o.getOrder_Time());
-			ps.setInt(4, o.getMember_id());
-			ps.setInt(5, o.getSeller_id());
+			ps.setString(4, o.getMember_id());
+			ps.setString(5, o.getSeller_id());
 			ps.setInt(6, o.getTotal());
 			
 			ps.executeUpdate();
@@ -59,8 +59,8 @@ public class orderDaoImpl implements orderDao{
 				o.setOrder_Number(rs.getString("order_Number"));
 				o.setOrder_Date(rs.getString("order_Date"));
 				o.setOrder_Time(rs.getString("order_Time"));
-				o.setMember_id(rs.getInt("member_id"));
-				o.setSeller_id(rs.getInt("seller_id"));
+				o.setMember_id(rs.getString("member_id"));
+				o.setSeller_id(rs.getString("seller_id"));
 				o.setTotal(rs.getInt("total"));
 			}
 
@@ -91,8 +91,8 @@ public class orderDaoImpl implements orderDao{
 				o.setOrder_Number(rs.getString("order_Number"));
 				o.setOrder_Date(rs.getString("order_Date"));
 				o.setOrder_Time(rs.getString("order_Time"));
-				o.setMember_id(rs.getInt("member_id"));
-				o.setSeller_id(rs.getInt("seller_id"));
+				o.setMember_id(rs.getString("member_id"));
+				o.setSeller_id(rs.getString("seller_id"));
 				o.setTotal(rs.getInt("total"));
 				
 				l.add(o);

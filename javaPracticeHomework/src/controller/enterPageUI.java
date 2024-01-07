@@ -6,8 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.member.logInPageUI;
 import controller.order.orderAddUI;
 import controller.seller.sellerLoginUI;
+import util.dynamicClock;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -19,7 +21,14 @@ import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
+
+import java.awt.Cursor;
 
 public class enterPageUI extends JFrame {
 
@@ -57,44 +66,45 @@ public class enterPageUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		dynamicClock.createDynamicClock(contentPane);
+		
+		
 		JLabel lblNewLabel_1 = new JLabel("<html>Beauty Plastic <br/> hospital</html>");
 		lblNewLabel_1.setFont(new Font("Corbel Light", Font.PLAIN, 52));
 		lblNewLabel_1.setBounds(252, 38, 295, 161);
 		contentPane.add(lblNewLabel_1);
 		
 		btnNewButton = new JButton("");
+		btnNewButton.setRolloverEnabled(false);
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
+			public void mouseClicked(MouseEvent e) {
+				logInPageUI add=new logInPageUI();
+				add.setVisible(true);
+				dispose();
+			}
+			@Override
 			public void mouseEntered(MouseEvent e) {
-				btnNewButton.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\Button_1_hover.png"));
+				btnNewButton.setIcon(new ImageIcon(enterPageUI.class.getResource("/asset/Button_1_hover.png")));
 				btnNewButton.setBounds(398, 242, 154, 51);
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnNewButton.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\Button_1.png"));
+				btnNewButton.setIcon(new ImageIcon(enterPageUI.class.getResource("/asset/Button_1.png")));
 				btnNewButton.setBounds(401, 244, 146, 48);
 			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				orderAddUI add=new orderAddUI();
-				add.setVisible(true);
-				dispose();
-			}
 		});
-		btnNewButton.setRolloverEnabled(false);
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setBorder(null);
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnNewButton.setIcon(new ImageIcon(enterPageUI.class.getResource("/asset/Button_1.png")));
 		btnNewButton.setBounds(401, 244, 146, 48);
 		contentPane.add(btnNewButton);
 		
 		lblNewLabel_2 = new JLabel("<HTML><U>seller system ></U></HTML>");
+		lblNewLabel_2.setVisible(false);
 		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -111,9 +121,6 @@ public class enterPageUI extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(-54, 10, 550, 366);
-//		lblNewLabel.setIcon(new ImageIcon("C:\\javaOCP\\javaPracticeShop\\javaPracticeHomework\\asset\\BG2.jpg"));
-		
-//		lblNewLabel.setIcon(new ImageIcon("D:\\Tina\\java\\javaPracticeShop\\javaPracticeHomework\\asset\\\\BG2.jpg"));
 		lblNewLabel.setIcon(new ImageIcon(enterPageUI.class.getResource("/asset/BG2.jpg")));
 		contentPane.add(lblNewLabel);
 	}

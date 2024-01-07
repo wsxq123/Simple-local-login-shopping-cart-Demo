@@ -12,7 +12,9 @@ public interface order_productDao {
 	
 //read
 	//when search one order, return the list of relative order_product data 
-	List<order_product> queryOorder_product(String order_Number);
+	List<order_product> queryOrder_product(String order_Number);
+	
+	Integer queryOrder_productTotal(String order_Number);
 		
 //update
 		

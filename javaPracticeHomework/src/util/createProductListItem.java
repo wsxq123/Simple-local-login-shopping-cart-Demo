@@ -20,8 +20,8 @@ import javax.swing.SwingConstants;
 
 import controller.order.orderAddUI;
 
-public class productListItem {
-	public static void createProductListItem(JPanel fatherPanel,String product,String price) {
+public class createProductListItem {
+	public static void create(JPanel fatherPanel,String product,String price) {
 		JTextField textField;
 		
 		//gridbag panel				
