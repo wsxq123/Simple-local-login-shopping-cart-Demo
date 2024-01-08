@@ -3,7 +3,6 @@ package dao;
 import java.util.List;
 
 import model.order_product;
-import model.product;
 
 public interface order_productDao {
 	

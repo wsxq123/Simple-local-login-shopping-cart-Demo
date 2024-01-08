@@ -4,30 +4,18 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Canvas;
-import java.awt.Rectangle;
-import java.awt.Cursor;
 import javax.swing.JLabel;
-import java.awt.Choice;
 import javax.swing.JComboBox;
 import java.awt.Font;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
 import controller.member.logInPageUI;
 import dao.impl.productDaoImpl;
-import model.member;
-import model.order_product;
 import model.product;
-import model.shoppingCart;
 import util.cal;
-import util.createCheckListItem;
 import util.checkPanelItem;
 import util.dynamicClock;
 import util.createProductListItem;
@@ -36,40 +24,23 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-import javax.swing.ListSelectionModel;
 import java.awt.Component;
 import java.awt.Dimension;
-import javax.swing.JTextArea;
 import java.awt.FlowLayout;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.Box;
-import java.awt.GridLayout;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
 
 public class orderAddUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
 	private JComboBox<String> comboBox;
 	private JLabel promptTextLabel2;
 
@@ -226,6 +197,7 @@ public class orderAddUI extends JFrame {
 				switch (switchCode) {
 					case 1:
 						try {
+							@SuppressWarnings("unchecked")
 							List<String[]> shoppingCartListFromFile = (List<String[]>) cal.readFile("Order.txt").readObject();
 							List<String[]> newList = Stream.concat(shoppingCartInPanel.stream(), shoppingCartListFromFile.stream()).toList();
 							shoppingCartInPanel = newList;

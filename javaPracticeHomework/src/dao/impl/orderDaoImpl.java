@@ -10,8 +10,6 @@ import java.util.List;
 import dao.dbConnection;
 import dao.orderDao;
 import model.order;
-import model.product;
-import model.seller;
 
 public class orderDaoImpl implements orderDao{
 
@@ -76,7 +74,7 @@ public class orderDaoImpl implements orderDao{
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.order"
 				   + "WHERE beauty_clinic.order.order_Date BETWEEN ? AND ?";
-		List<order> l = new ArrayList();
+		List<order> l = new ArrayList<order>();
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

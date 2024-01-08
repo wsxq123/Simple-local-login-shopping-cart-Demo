@@ -4,8 +4,6 @@ public class shoppingCart{
 	private String item;
 	private String price;
 	private String amount;
-	private String total;
-	
 	public shoppingCart(String item, String price, String amount) {
 		super();
 		this.item = item;
@@ -47,7 +45,6 @@ public class shoppingCart{
 	}
 
 	public void setTotal(String total) {
-		this.total = total;
 	}
 	
 	

@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-
 import dao.impl.orderDaoImpl;
 import dao.impl.order_productDaoImpl;
 import dao.impl.productDaoImpl;
@@ -44,6 +42,10 @@ import javax.swing.ScrollPaneConstants;
 
 public class receiptPageUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**

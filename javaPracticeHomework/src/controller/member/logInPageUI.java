@@ -4,26 +4,17 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import controller.order.checkPageUI;
 import controller.order.orderAddUI;
-import controller.seller.sellerLoginUI;
 import dao.impl.memberDaoImpl;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
-import javax.swing.border.CompoundBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.util.List;
-
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
@@ -32,7 +23,6 @@ import util.TextPrompt;
 import util.cal;
 import util.dynamicClock;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Insets;
@@ -43,8 +33,6 @@ import javax.swing.border.EtchedBorder;
 public class logInPageUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JButton btnNewButton;
-	private JLabel lblNewLabel_2;
 	private JTextField phoneTextField;
 	private JTextField birthDateTextField;
 	private JPanel contentPane;

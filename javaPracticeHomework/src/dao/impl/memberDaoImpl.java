@@ -93,7 +93,7 @@ public class memberDaoImpl implements memberDao {
 	public List<member> queryAllMember() {
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.member";
-		List<member> l = new ArrayList();
+		List<member> l = new ArrayList<member>();
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

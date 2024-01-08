@@ -14,7 +14,7 @@ public class dbConnection {
 		Connection conn = null;
 		String url = "jdbc:mysql://localhost:3306/beauty_clinic";
 		String user = "root";
-		String password = "12345";
+		String password = "1234";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

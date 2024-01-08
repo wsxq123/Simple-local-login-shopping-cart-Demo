@@ -12,8 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-
 import controller.member.logInPageUI;
 import dao.impl.orderDaoImpl;
 import dao.impl.order_productDaoImpl;
@@ -21,17 +19,13 @@ import dao.impl.productDaoImpl;
 import model.order;
 import model.order_product;
 import model.product;
-import util.ImageBtn;
 import util.cal;
 import util.createCheckListItem;
 import util.checkPanelItem;
 import util.dynamicClock;
 
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -39,8 +33,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -292,6 +284,7 @@ public class checkPageUI extends JFrame {
 		ObjectInputStream ois = cal.readFile("Order.txt");
 		
 		try {
+			@SuppressWarnings("unchecked")
 			List<String[]> lo = (List<String[]>) ois.readObject();
 			
 			for(String[] o:lo) {
@@ -310,20 +303,6 @@ public class checkPageUI extends JFrame {
 		panel_1.add(checkTotalLabel);
 		
 		checkTotalLabel.setText(checkTotal.toString());
-		//==================for test=====================
-		
-		//==================for test=====================
-//		checkListItem.createCheckListItem(checkListPanel, "plasticSurgery_BOTOX", "5999", "10");
-//		checkListItem.createCheckListItem(checkListPanel, "bodyShape_coolSculpting", "12999", "1");
-//		checkListItem.createCheckListItem(checkListPanel, "yrdgf", "155999", "5");
-//		checkListItem.createCheckListItem(checkListPanel, "plasticSurgery_BOTOX", "5999", "10");
-//		checkListItem.createCheckListItem(checkListPanel, "bodyShape_coolSculpting", "12999", "1");
-//		checkListItem.createCheckListItem(checkListPanel, "yrdgf", "155999", "5");
-//		checkListItem.createCheckListItem(checkListPanel, "plasticSurgery_BOTOX", "5999", "10");
-//		checkListItem.createCheckListItem(checkListPanel, "bodyShape_coolSculpting", "12999", "1");
-//		checkListItem.createCheckListItem(checkListPanel, "yrdgf", "155999", "5");
-
-
 	}
 
 }

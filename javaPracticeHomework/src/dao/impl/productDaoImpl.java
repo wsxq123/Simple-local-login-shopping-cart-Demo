@@ -9,9 +9,7 @@ import java.util.List;
 
 import dao.dbConnection;
 import dao.productDao;
-import model.member;
 import model.product;
-import model.seller;
 
 public class productDaoImpl implements productDao {
 
@@ -94,7 +92,7 @@ public class productDaoImpl implements productDao {
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.product";
 				
-		List<product> l = new ArrayList();
+		List<product> l = new ArrayList<product>();
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

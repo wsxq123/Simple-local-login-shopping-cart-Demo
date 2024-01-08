@@ -10,7 +10,6 @@ import java.util.List;
 import dao.dbConnection;
 import dao.order_productDao;
 import model.order_product;
-import model.product;
 
 public class order_productDaoImpl implements order_productDao {
 

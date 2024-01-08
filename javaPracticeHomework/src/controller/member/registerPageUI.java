@@ -7,13 +7,8 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Insets;
-import java.awt.TextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Enumeration;
-
-import javax.swing.AbstractButton;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -23,13 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-import controller.order.checkPageUI;
-import controller.order.orderAddUI;
-import controller.seller.sellerLoginUI;
 import dao.impl.memberDaoImpl;
 import model.member;
 import util.TextPrompt;
@@ -37,7 +28,6 @@ import util.dynamicClock;
 
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
 import java.awt.GridLayout;
 
 public class registerPageUI extends JFrame {

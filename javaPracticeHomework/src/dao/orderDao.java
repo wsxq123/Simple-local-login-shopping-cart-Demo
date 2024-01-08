@@ -2,7 +2,6 @@ package dao;
 
 import java.util.List;
 
-import model.member;
 import model.order;
 
 public interface orderDao {
