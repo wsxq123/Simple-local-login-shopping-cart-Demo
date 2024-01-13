@@ -94,7 +94,6 @@ public class enterPageUI extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		lblNewLabel_2 = new JLabel("<HTML><U>seller system ></U></HTML>");
-		lblNewLabel_2.setVisible(false);
 		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

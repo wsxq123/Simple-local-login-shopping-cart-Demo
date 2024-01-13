@@ -10,9 +10,8 @@ public class seller {
 		super();
 	}
 
-	public seller(Integer seller_id, String seller_name, String password, String seller_brithdate) {
+	public seller(String seller_name, String password, String seller_brithdate) {
 		super();
-		this.seller_id = seller_id;
 		this.seller_name = seller_name;
 		this.password = password;
 		this.seller_brithdate = seller_brithdate;

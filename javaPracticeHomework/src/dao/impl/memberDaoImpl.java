@@ -90,10 +90,11 @@ public class memberDaoImpl implements memberDao {
 	}
 
 	@Override
-	public List<member> queryAllMember() {
+	public Object[][] queryAllMember() {
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.member";
 		List<member> l = new ArrayList<member>();
+		Object[][] o = new Object[l.size()][6];
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -109,12 +110,22 @@ public class memberDaoImpl implements memberDao {
 				m.setAddress(rs.getString("address"));
 				l.add(m);
 			}
+			
+			//為了填進Jtable的欄位比較方便
+			for (int i = 0; i < l.size(); i++) {
+				o[i][0] = l.get(i).getMember_id();
+				o[i][1] = l.get(i).getName();
+				o[i][2] = l.get(i).getBirthdate();
+				o[i][3] = l.get(i).getGender();
+				o[i][4] = l.get(i).getPhone();
+				o[i][5] = l.get(i).getAddress();
+			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return l;
+		return o;
 	}
 
 	@Override

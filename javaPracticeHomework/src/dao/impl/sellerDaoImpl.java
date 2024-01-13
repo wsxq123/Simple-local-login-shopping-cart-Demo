@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.dbConnection;
 import dao.sellerDao;
+import model.member;
 import model.seller;
 
 public class sellerDaoImpl implements sellerDao {
@@ -19,7 +22,7 @@ public class sellerDaoImpl implements sellerDao {
 	@Override
 	public void createSeller(seller s) {
 		Connection conn = dbConnection.getDB();
-		String sql = "Insert into beauty_clinic.seller(seller_name,password,seller_brithday)" + "values(?,?,?)";
+		String sql = "Insert into beauty_clinic.seller(seller_name,password,seller_brithdate)" + "values(?,?,?)";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -84,6 +87,40 @@ public class sellerDaoImpl implements sellerDao {
 		}
 		return s;
 	}
+	
+	@Override
+	public Object[][] queryAllSeller() {
+		Connection conn = dbConnection.getDB();
+		String sql = "select * from beauty_clinic.seller";
+		List<seller> l = new ArrayList<seller>();
+		Object[][] o = new Object[l.size()][4];
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				seller s = new seller();
+				s.setSeller_id(rs.getInt("seller_id"));
+				s.setSeller_name(rs.getString("seller_name"));
+				s.setPassword(rs.getString("password"));
+				s.setSeller_brithdate(rs.getString("seller_brithdate"));
+				l.add(s);
+			}
+			//為了填進Jtable的欄位比較方便
+			for (int i = 0; i < l.size(); i++) {
+				o[i][0] = l.get(i).getSeller_id();
+				o[i][1] = l.get(i).getSeller_name();
+				o[i][2] = l.get(i).getPassword();
+				o[i][3] = l.get(i).getSeller_brithdate();
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return o;
+	}
 
 	@Override
 	public void updateSeller(seller s) {
@@ -122,5 +159,7 @@ public class sellerDaoImpl implements sellerDao {
 			e.printStackTrace();
 		}
 	}
+
+	
 
 }

@@ -17,7 +17,7 @@ public interface memberDao {
 	member queryMember(String phone);
 
 	// all member search (memberSearchUI)
-	List<member> queryAllMember();
+	Object[][] queryAllMember();
 
 //update 
 	// (memberSearchUI)

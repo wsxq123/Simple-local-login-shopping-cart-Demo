@@ -12,7 +12,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.awt.Font;
-import controller.member.logInPageUI;
 import dao.impl.productDaoImpl;
 import model.product;
 import util.cal;
@@ -268,21 +267,5 @@ public class orderAddUI extends JFrame {
 		addBtn.setBounds(282, 21, 77, 32);
 		contentPane.add(addBtn);
 		addBtn.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/AddBtn.png")));
-		
-		JButton btnNewButton_1_1_1 = new JButton("");
-		btnNewButton_1_1_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				logInPageUI add = new logInPageUI();
-				add.setVisible(true);					
-				dispose();
-			}
-		});
-		btnNewButton_1_1_1.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/backBtn.png")));
-		btnNewButton_1_1_1.setContentAreaFilled(false);
-		btnNewButton_1_1_1.setBorderPainted(false);
-		btnNewButton_1_1_1.setBackground(Color.WHITE);
-		btnNewButton_1_1_1.setBounds(10, 318, 123, 32);
-		contentPane.add(btnNewButton_1_1_1);
 	}
 }

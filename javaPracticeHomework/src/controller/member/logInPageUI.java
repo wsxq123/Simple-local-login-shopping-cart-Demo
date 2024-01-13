@@ -224,6 +224,7 @@ public class logInPageUI extends JFrame {
 		loginBtn_1.setBorderPainted(false);
 		loginBtn_1.setBackground(Color.WHITE);
 		panel_1_1_1.add(loginBtn_1);
+		
 		tp1.setFont(new Font("新細明體", Font.ITALIC, 15));
 		tp1.setHorizontalAlignment(SwingConstants.CENTER);
 		tp1.setForeground( Color.gray );
