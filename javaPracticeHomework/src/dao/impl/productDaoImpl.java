@@ -38,19 +38,19 @@ public class productDaoImpl implements productDao {
 	}
 
 	@Override
-	public product queryProduct(int product_id) {
+	public product queryProduct(String product_id) {
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.product where product_id=?";
 		product p = null;
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, product_id);
+			ps.setString(1, product_id);
 
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				p = new product();
-				p.setProduct_id(rs.getInt("product_id"));
+				p.setProduct_id(rs.getString("product_id"));
 				p.setProduct_name(rs.getString("product_name"));
 				p.setProduct_price(rs.getInt("product_price"));
 			}
@@ -61,7 +61,7 @@ public class productDaoImpl implements productDao {
 		}
 		return p;
 	}
-	
+
 	@Override
 	public product queryProductIDByName(String product_name) {
 		Connection conn = dbConnection.getDB();
@@ -75,7 +75,7 @@ public class productDaoImpl implements productDao {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				p = new product();
-				p.setProduct_id(rs.getInt("product_id"));
+				p.setProduct_id(rs.getString("product_id"));
 				p.setProduct_name(rs.getString("product_name"));
 				p.setProduct_price(rs.getInt("product_price"));
 			}
@@ -91,7 +91,7 @@ public class productDaoImpl implements productDao {
 	public List<product> queryAllProduct() {
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.product";
-				
+
 		List<product> l = new ArrayList<product>();
 
 		try {
@@ -101,7 +101,7 @@ public class productDaoImpl implements productDao {
 			while (rs.next()) {
 				product p = new product();
 				p = new product();
-				p.setProduct_id(rs.getInt("product_id"));
+				p.setProduct_id(rs.getString("product_id"));
 				p.setProduct_name(rs.getString("product_name"));
 				p.setProduct_price(rs.getInt("product_price"));
 				l.add(p);
@@ -115,6 +115,22 @@ public class productDaoImpl implements productDao {
 	}
 
 	@Override
+	public Object[][] queryAllProductByObject() {
+		List<product> l = queryAllProduct();
+
+		Object[][] o = null;
+		// 為了填進Jtable的欄位比較方便
+		o = new Object[l.size()][3];
+		for (int i = 0; i < l.size(); i++) {
+			o[i][0] = l.get(i).getProduct_id();
+			o[i][1] = l.get(i).getProduct_name();
+			o[i][2] = l.get(i).getProduct_price();
+		}
+
+		return o;
+	}
+
+	@Override
 	public void updateProduct(product p) {
 		Connection conn = dbConnection.getDB();
 		String sql = "update beauty_clinic.product set product_name=?,product_price=? where product_id=?";
@@ -123,7 +139,7 @@ public class productDaoImpl implements productDao {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, p.getProduct_name());
 			ps.setInt(2, p.getProduct_price());
-			ps.setInt(3, p.getProduct_id());
+			ps.setString(3, p.getProduct_id());
 
 			ps.executeUpdate();
 
@@ -135,13 +151,13 @@ public class productDaoImpl implements productDao {
 	}
 
 	@Override
-	public void deleteProduct(int product_id) {
+	public void deleteProduct(String product_id) {
 		Connection conn = dbConnection.getDB();
 		String sql = "delete from beauty_clinic.product where product_id=?";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, product_id);
+			ps.setString(1, product_id);
 
 			ps.executeUpdate();
 
@@ -150,7 +166,5 @@ public class productDaoImpl implements productDao {
 			e.printStackTrace();
 		}
 	}
-
-	
 
 }

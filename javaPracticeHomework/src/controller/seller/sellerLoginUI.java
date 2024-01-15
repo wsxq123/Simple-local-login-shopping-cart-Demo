@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+import controller.enterPageUI;
 import controller.searchPageUI;
 import controller.member.logInPageUI;
 import controller.member.registerPageUI;
@@ -33,6 +34,7 @@ import dao.impl.sellerDaoImpl;
 import util.TextPrompt;
 import util.cal;
 import util.dynamicClock;
+import java.awt.GridLayout;
 
 public class sellerLoginUI extends JFrame {
 
@@ -79,18 +81,48 @@ public class sellerLoginUI extends JFrame {
 
 		Component verticalStrut_1_1 = Box.createVerticalStrut(20);
 		panel_4.add(verticalStrut_1_1);
-		verticalStrut_1_1.setPreferredSize(new Dimension(590, 5));
+		verticalStrut_1_1.setPreferredSize(new Dimension(590, 10));
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.WHITE);
 		panel_4.add(panel_3);
 		panel_3.setPreferredSize(new Dimension(590, 60));
+		panel_3.setLayout(new GridLayout(0, 3, 0, 0));
+
+		JPanel panel_7 = new JPanel();
+		panel_7.setBackground(Color.WHITE);
+		panel_3.add(panel_7);
+
+		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(Color.WHITE);
+		panel_3.add(panel_6);
 
 		JLabel lblNewLabel = new JLabel("Seller Login");
+		lblNewLabel.setBackground(Color.WHITE);
+		panel_6.add(lblNewLabel);
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Corbel", Font.PLAIN, 40));
-		panel_3.add(lblNewLabel);
+
+		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(Color.WHITE);
+		panel_3.add(panel_5);
+
+		JButton loginBtn_2 = new JButton("");
+		loginBtn_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				enterPageUI add = new enterPageUI();
+				add.setVisible(true);
+				dispose();
+			}
+		});
+		panel_5.add(loginBtn_2);
+		loginBtn_2.setIcon(new ImageIcon(sellerLoginUI.class.getResource("/asset/backBtn.png")));
+		loginBtn_2.setMargin(new Insets(2, 2, 2, 2));
+		loginBtn_2.setContentAreaFilled(false);
+		loginBtn_2.setBorderPainted(false);
+		loginBtn_2.setBackground(Color.WHITE);
 
 		JLabel warningLabel = new JLabel("Wrong input or No account");
 		panel_4.add(warningLabel);
@@ -129,12 +161,6 @@ public class sellerLoginUI extends JFrame {
 		phoneTextField.setBorder(null);
 		panel_2.add(phoneTextField);
 		phoneTextField.setColumns(14);
-
-		// Prompt word in textField
-		TextPrompt tp = new TextPrompt("Ex: 09xxxxxxxx", phoneTextField);
-		tp.setFont(new Font("新細明體", Font.ITALIC, 15));
-		tp.setHorizontalAlignment(SwingConstants.CENTER);
-		tp.setForeground(Color.gray);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);

@@ -11,12 +11,15 @@ public interface productDao {
 
 // read
 	// single product search(productSearchUI)
-	product queryProduct(int product_id);
+	product queryProduct(String product_id);
 	
 	product queryProductIDByName(String product_name);
 
 	// products search(productSearchUI)
 	List<product> queryAllProduct();
+	
+	// products search(productSearchUI)
+	Object[][] queryAllProductByObject();
 
 // update
 	// (productSearchUI)
@@ -24,6 +27,6 @@ public interface productDao {
 
 // delete
 	// (productSearchUI)
-	void deleteProduct(int product_id);
+	void deleteProduct(String product_id);
 
 }

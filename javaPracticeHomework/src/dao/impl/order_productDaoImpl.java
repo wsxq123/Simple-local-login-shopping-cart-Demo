@@ -26,7 +26,7 @@ public class order_productDaoImpl implements order_productDao {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, op.getOrder_Number());
-			ps.setInt(2, op.getProduct_id());
+			ps.setString(2, op.getProduct_id());
 			ps.setInt(3, op.getAmount());
 			ps.setInt(4, op.getCost());
 
@@ -52,7 +52,7 @@ public class order_productDaoImpl implements order_productDao {
 				order_product op = new order_product();
 				op = new order_product();
 				op.setOrder_Number(rs.getString("order_Number"));
-				op.setProduct_id(rs.getInt("product_id"));
+				op.setProduct_id(rs.getString("product_id"));
 				op.setAmount(rs.getInt("amount"));
 				op.setCost(rs.getInt("cost"));
 				l.add(op);

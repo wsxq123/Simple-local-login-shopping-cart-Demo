@@ -70,22 +70,25 @@ public class orderDaoImpl implements orderDao{
 	}
 
 	@Override
-	public List<order> queryOrderByDate(String dateStart, String dateEnd) {
+	public Object[][] queryOrderByDate(String dateStart, String dateEnd) {
 		Connection conn = dbConnection.getDB();
-		String sql = "select * from beauty_clinic.order"
+		String sql = "select * from beauty_clinic.order "
 				   + "WHERE beauty_clinic.order.order_Date BETWEEN ? AND ?";
+		
 		List<order> l = new ArrayList<order>();
-
+		Object[][] ob = null;
+		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, dateStart);
-			ps.setString(1, dateEnd);
+			ps.setString(2, dateEnd);
 			
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				order o = new order();
 				o = new order();
+				o.setOrder_id(rs.getInt("order_id"));
 				o.setOrder_Number(rs.getString("order_Number"));
 				o.setOrder_Date(rs.getString("order_Date"));
 				o.setOrder_Time(rs.getString("order_Time"));
@@ -95,12 +98,23 @@ public class orderDaoImpl implements orderDao{
 				
 				l.add(o);
 			}
+			
+			ob = new Object[l.size()][7];
+			for (int i = 0; i < l.size(); i++) {
+				ob[i][0] = l.get(i).getOrder_id();
+				ob[i][1] = l.get(i).getOrder_Number();
+				ob[i][2] = l.get(i).getOrder_Date();
+				ob[i][3] = l.get(i).getOrder_Time();
+				ob[i][4] = l.get(i).getMember_id();
+				ob[i][5] = l.get(i).getSeller_id();
+				ob[i][6] = l.get(i).getTotal();
+			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return l;
+		return ob;
 	}
 
 	@Override

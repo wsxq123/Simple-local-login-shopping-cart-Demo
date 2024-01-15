@@ -10,8 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class test extends JFrame {
 
@@ -45,115 +49,38 @@ public class test extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setPreferredSize(new Dimension(400, 300));
-		contentPane.add(panel_2);
-		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		JPanel panel = new JPanel();
-		panel_2.add(panel);
-		
 		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("actionPerformed Click!");
+			}
+		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				pack();
-				panel_2.getAutoscrolls();
-				System.out.println(Window.getWindows());
+				System.out.println("mouseClicked Click!");
 
 			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("mousePressed Click!");
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				System.out.println("mouseReleased Click!");
+			}
 		});
-		panel.add(btnNewButton);
+		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		panel.add(lblNewLabel_1);
-		
-		JButton btnNewButton_1 = new JButton("New button");
-		panel.add(btnNewButton_1);
-		
-		JPanel panel_1 = new JPanel();
-		panel_2.add(panel_1);
-		
-		JButton btnNewButton_2 = new JButton("New button");
-		panel_1.add(btnNewButton_2);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("New label");
-		panel_1.add(lblNewLabel_1_1);
-		
-		JButton btnNewButton_1_1 = new JButton("New button");
-		panel_1.add(btnNewButton_1_1);
-		
-		JPanel panel_1_1 = new JPanel();
-		panel_2.add(panel_1_1);
-		
-		JButton btnNewButton_2_1 = new JButton("New button");
-		panel_1_1.add(btnNewButton_2_1);
-		
-		JLabel lblNewLabel_1_1_1 = new JLabel("New label");
-		panel_1_1.add(lblNewLabel_1_1_1);
-		
-		JButton btnNewButton_1_1_1 = new JButton("New button");
-		panel_1_1.add(btnNewButton_1_1_1);
-		
-		JPanel panel_1_1_1 = new JPanel();
-		panel_2.add(panel_1_1_1);
-		
-		JButton btnNewButton_2_1_1 = new JButton("New button");
-		panel_1_1_1.add(btnNewButton_2_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("New label");
-		panel_1_1_1.add(lblNewLabel_1_1_1_1);
-		
-		JButton btnNewButton_1_1_1_1 = new JButton("New button");
-		panel_1_1_1.add(btnNewButton_1_1_1_1);
-		
-		JPanel panel_1_1_1_1 = new JPanel();
-		panel_2.add(panel_1_1_1_1);
-		
-		JButton btnNewButton_2_1_1_1 = new JButton("New button");
-		panel_1_1_1_1.add(btnNewButton_2_1_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("New label");
-		panel_1_1_1_1.add(lblNewLabel_1_1_1_1_1);
-		
-		JButton btnNewButton_1_1_1_1_1 = new JButton("New button");
-		panel_1_1_1_1.add(btnNewButton_1_1_1_1_1);
-		
-		JPanel panel_1_1_1_1_1 = new JPanel();
-		panel_2.add(panel_1_1_1_1_1);
-		
-		JButton btnNewButton_2_1_1_1_1 = new JButton("New button");
-		panel_1_1_1_1_1.add(btnNewButton_2_1_1_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("New label");
-		panel_1_1_1_1_1.add(lblNewLabel_1_1_1_1_1_1);
-		
-		JButton btnNewButton_1_1_1_1_1_1 = new JButton("New button");
-		panel_1_1_1_1_1.add(btnNewButton_1_1_1_1_1_1);
-		
-		JPanel panel_1_1_1_1_1_1 = new JPanel();
-		panel_2.add(panel_1_1_1_1_1_1);
-		
-		JButton btnNewButton_2_1_1_1_1_1 = new JButton("New button");
-		panel_1_1_1_1_1_1.add(btnNewButton_2_1_1_1_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1_1_1 = new JLabel("New label");
-		panel_1_1_1_1_1_1.add(lblNewLabel_1_1_1_1_1_1_1);
-		
-		JButton btnNewButton_1_1_1_1_1_1_1 = new JButton("New button");
-		panel_1_1_1_1_1_1.add(btnNewButton_1_1_1_1_1_1_1);
-		
-		JPanel panel_1_1_1_1_1_1_1 = new JPanel();
-		panel_2.add(panel_1_1_1_1_1_1_1);
-		
-		JButton btnNewButton_2_1_1_1_1_1_1 = new JButton("New button");
-		panel_1_1_1_1_1_1_1.add(btnNewButton_2_1_1_1_1_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1_1_1_1 = new JLabel("New label");
-		panel_1_1_1_1_1_1_1.add(lblNewLabel_1_1_1_1_1_1_1_1);
-		
-		JButton btnNewButton_1_1_1_1_1_1_1_1 = new JButton("New button");
-		panel_1_1_1_1_1_1_1.add(btnNewButton_1_1_1_1_1_1_1_1);
+		JButton btnNewButton_2 = new JButton("New button2");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnNewButton.doClick();
+			
+			}
+		});
+		contentPane.add(btnNewButton_2);
 	}
 
 }

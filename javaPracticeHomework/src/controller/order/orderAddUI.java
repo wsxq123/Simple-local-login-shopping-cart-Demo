@@ -36,6 +36,9 @@ import javax.swing.Box;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 
+import controller.enterPageUI;
+import controller.member.logInPageUI;
+
 public class orderAddUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -264,8 +267,26 @@ public class orderAddUI extends JFrame {
 		addBtn.setContentAreaFilled(false);
 		addBtn.setBorderPainted(false);
 		addBtn.setBackground(Color.WHITE);
-		addBtn.setBounds(282, 21, 77, 32);
+		addBtn.setBounds(272, 25, 109, 32);
 		contentPane.add(addBtn);
 		addBtn.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/AddBtn.png")));
+		
+		JButton addBtn_1 = new JButton("");
+		addBtn_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cal.deleteFile("Order.txt");
+				cal.deleteFile("memberInfo.txt");
+				logInPageUI add = new logInPageUI();
+				add.setVisible(true);
+				dispose();
+			}
+		});
+		addBtn_1.setIcon(new ImageIcon(orderAddUI.class.getResource("/asset/backBtn.png")));
+		addBtn_1.setContentAreaFilled(false);
+		addBtn_1.setBorderPainted(false);
+		addBtn_1.setBackground(Color.WHITE);
+		addBtn_1.setBounds(10, 318, 109, 32);
+		contentPane.add(addBtn_1);
 	}
 }

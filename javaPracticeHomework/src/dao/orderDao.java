@@ -14,7 +14,7 @@ public interface orderDao {
 	order queryOrder(String order_Number);
 
 	// orders search by date(orderSearchUI)
-	List<order> queryOrderByDate(String dateStart, String dateEnd);
+	Object[][] queryOrderByDate(String dateStart, String dateEnd);
 
 //update
 

@@ -35,6 +35,8 @@ import model.seller;
 import util.dynamicClock;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 public class sellerSearchUI extends JFrame {
 
@@ -310,6 +312,8 @@ public class sellerSearchUI extends JFrame {
 		loginBtn.setBounds(441, 318, 123, 32);
 
 		JButton loginBtn_2 = new JButton("");
+		loginBtn_2.setBorderPainted(false);
+		loginBtn_2.setBorder(null);
 		loginBtn_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -330,7 +334,6 @@ public class sellerSearchUI extends JFrame {
 		loginBtn_2.setIcon(new ImageIcon(sellerSearchUI.class.getResource("/asset/searchAllBtn.png")));
 		loginBtn_2.setMargin(new Insets(0, 0, 0, 0));
 		loginBtn_2.setContentAreaFilled(false);
-		loginBtn_2.setBorderPainted(false);
 		loginBtn_2.setBackground(Color.WHITE);
 	}
 

@@ -93,7 +93,7 @@ public class sellerDaoImpl implements sellerDao {
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.seller";
 		List<seller> l = new ArrayList<seller>();
-		Object[][] o = new Object[l.size()][4];
+		Object[][] o = null;
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -107,7 +107,9 @@ public class sellerDaoImpl implements sellerDao {
 				s.setSeller_brithdate(rs.getString("seller_brithdate"));
 				l.add(s);
 			}
+			
 			//為了填進Jtable的欄位比較方便
+			o = new Object[l.size()][4];
 			for (int i = 0; i < l.size(); i++) {
 				o[i][0] = l.get(i).getSeller_id();
 				o[i][1] = l.get(i).getSeller_name();

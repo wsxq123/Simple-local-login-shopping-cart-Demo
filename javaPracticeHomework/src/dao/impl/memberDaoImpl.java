@@ -94,8 +94,8 @@ public class memberDaoImpl implements memberDao {
 		Connection conn = dbConnection.getDB();
 		String sql = "select * from beauty_clinic.member";
 		List<member> l = new ArrayList<member>();
-		Object[][] o = new Object[l.size()][6];
-
+		Object[][] o = null;
+		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -112,6 +112,7 @@ public class memberDaoImpl implements memberDao {
 			}
 			
 			//為了填進Jtable的欄位比較方便
+			o = new Object[l.size()][6];
 			for (int i = 0; i < l.size(); i++) {
 				o[i][0] = l.get(i).getMember_id();
 				o[i][1] = l.get(i).getName();

@@ -170,6 +170,22 @@ public class searchPageUI extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_6.add(panel_1);
 		panel_1.setBackground(Color.WHITE);
+		
+		JButton btnNewButton_3_2 = new JButton("");
+		btnNewButton_3_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				sellerLoginUI add = new sellerLoginUI();
+				add.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton_3_2.setIcon(new ImageIcon(searchPageUI.class.getResource("/asset/backBtn.png")));
+		btnNewButton_3_2.setMargin(new Insets(15, 2, 15, 2));
+		btnNewButton_3_2.setContentAreaFilled(false);
+		btnNewButton_3_2.setBorderPainted(false);
+		btnNewButton_3_2.setBackground(Color.WHITE);
+		panel_1.add(btnNewButton_3_2);
 	}
 
 }
