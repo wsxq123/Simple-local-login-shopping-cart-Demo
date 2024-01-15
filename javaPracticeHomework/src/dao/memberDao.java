@@ -1,7 +1,5 @@
 package dao;
 
-import java.util.List;
-
 import model.member;
 
 public interface memberDao {

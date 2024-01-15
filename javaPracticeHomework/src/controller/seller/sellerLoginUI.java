@@ -9,8 +9,6 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -20,19 +18,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import controller.enterPageUI;
 import controller.searchPageUI;
 import controller.member.logInPageUI;
-import controller.member.registerPageUI;
-import controller.order.orderAddUI;
-import dao.impl.memberDaoImpl;
 import dao.impl.sellerDaoImpl;
-import util.TextPrompt;
-import util.cal;
 import util.dynamicClock;
 import java.awt.GridLayout;
 

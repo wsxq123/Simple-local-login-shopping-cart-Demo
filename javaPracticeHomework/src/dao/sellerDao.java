@@ -1,8 +1,5 @@
 package dao;
 
-import java.util.List;
-
-import model.order;
 import model.seller;
 
 public interface sellerDao {

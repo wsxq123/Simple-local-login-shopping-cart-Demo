@@ -16,7 +16,6 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import java.awt.Dimension;

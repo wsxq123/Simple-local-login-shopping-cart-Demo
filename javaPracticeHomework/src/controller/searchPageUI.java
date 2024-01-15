@@ -6,38 +6,29 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controller.member.logInPageUI;
 import controller.member.memberSearchUI;
-import controller.order.orderAddUI;
 import controller.order.orderSearchUI;
 import controller.product.productSearchUI;
 import controller.seller.sellerLoginUI;
 import controller.seller.sellerSearchUI;
-import dao.impl.memberDaoImpl;
-import util.cal;
 import util.dynamicClock;
 
 import java.awt.Color;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.SpringLayout;
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.Component;
 
 public class searchPageUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**

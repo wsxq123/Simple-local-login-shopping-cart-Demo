@@ -9,7 +9,6 @@ import java.util.List;
 
 import dao.dbConnection;
 import dao.sellerDao;
-import model.member;
 import model.seller;
 
 public class sellerDaoImpl implements sellerDao {

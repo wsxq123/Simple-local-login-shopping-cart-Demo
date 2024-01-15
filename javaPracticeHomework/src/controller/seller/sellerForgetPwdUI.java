@@ -19,23 +19,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-import controller.searchPageUI;
-import controller.member.logInPageUI;
 import dao.impl.sellerDaoImpl;
 import model.seller;
-import util.TextPrompt;
 import util.dynamicClock;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.JScrollPane;
 
 public class sellerForgetPwdUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField sellerIdTextField;
 	private JTextField birthdateTextField;

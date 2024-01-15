@@ -9,9 +9,6 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -23,23 +20,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controller.searchPageUI;
-import controller.order.orderSearchUI;
 import dao.impl.sellerDaoImpl;
 import model.seller;
 import util.dynamicClock;
 import java.awt.GridLayout;
-import java.awt.CardLayout;
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
 
 public class sellerSearchUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField newNameTextField;

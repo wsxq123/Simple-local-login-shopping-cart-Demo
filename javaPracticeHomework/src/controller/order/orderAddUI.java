@@ -36,7 +36,6 @@ import javax.swing.Box;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 
-import controller.enterPageUI;
 import controller.member.logInPageUI;
 
 public class orderAddUI extends JFrame {
